@@ -2,9 +2,131 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-@prefix :     <http://example.org/kulturarena/> .
+@prefix kul:  <http://example.org/kulturarena/> .
 
 <http://example.org/kulturarena/> a owl:Ontology ;
     rdfs:label "Kulturarena Ontologie"@de .
 
-:Konzert a owl:Class .
+#classes#
+
+kul:Concert a owl:Class.
+
+kul:Musician a owl:Class.
+
+kul:Country a owl:Class.
+
+
+
+#properties#
+
+#Properties for Concert
+kul:inYear a owl:DatatypeProperty ;
+    rdfs:domain kul:Concert;
+    rdfs:range xsd:gYear.
+
+kul:performedBy a owl:ObjectProperty;
+    rdfs:domain kul:Concert ;
+    rdfs:range kul:Musician .
+
+
+#Properties for Country
+kul:hasName a owl:DatatypeProperty ;
+    rdfs:domain kul:Country ;
+    rdfs:range xsd:string.
+
+kul:hasCapital a owl:DatatypeProperty ;
+    rdfs:domain kul:Country ;
+    rdfs:range xsd:string.
+
+kul:hasPopulation a owl:DatatypeProperty ;
+    rdfs:domain kul:Country;
+    rdfs:range xsd:positiveInteger.
+
+
+#Properties for Musician
+kul:hasName a owl:DatatypeProperty ;
+    rdfs:domain kul:Musician ;
+    rdfs:range xsd:string .
+
+kul:hasMusicBrainzId a owl:DatatypeProperty;
+    rdfs:domain kul:Musician ;
+    rdfs:range xsd:string .
+
+kul:comesFrom a owl:ObjectProperty ;
+    rdfs:domain kul:Musician;
+    rdfs:range kul:Country.
+
+kul:hasGenre a owl:DatatypeProperty ;
+    rdfs:domain kul:Musician;
+    rdfs:range xsd:string.
+
+
+
+#Instances#
+
+#countries
+kul:Germany a kul:Country;
+    kul:hasName "Germany";
+    kul:hasCapital "Berlin";
+    kul:hasPopulation 83200000.
+
+kul:Switzerland a kul:Country;
+    kul:hasName "Switzerland";
+    kul:hasCapital "Bern";
+    kul:hasPopulation 8703000.
+
+kul:Libanon a kul:Country;
+    kul:hasName "Libanon";
+    kul:hasCapital "Beirut";
+    kul:hasPopulation 8703000.
+
+
+#musicians
+kul:BOY a kul:Musician ;
+    kul:hasName "BOY" ;
+    kul:comesfrom kul:Germany;
+    kul:comesfrom kul:Switzerland;
+    kul:hasMusicBrainzId "2e76bad0-edf3-4a6c-ad79-db87bb5a0d35";
+    kul:hasGenre "Pop". 
+
+kul:DePhazz a kul:Musician ;
+    kul:hasName "De-Phazz" ;
+    kul:comesfrom kul:Germany;
+    kul:hasMusicBrainzId "5c47ccd3-3f82-46b9-96b8-efdffc83f269";
+    kul:hasGenre "Jazz". 
+
+kul:YasmineHamdan a kul:Musician ;
+    kul:hasName "Yasmine Hamdan" ;
+    kul:comesfrom kul:Libanon;
+    kul:hasMusicBrainzId "9c21e094-2fbe-4ba9-9726-891d90f561a9";
+    kul:hasGenre "Pop". 
+    
+
+#concerts
+kul:Concert1 a kul:Concert ;
+    kul:performedBy kul:BOY;
+    kul:inYear 2012.
+
+kul:Concert2 a kul:Concert ;
+    kul:performedBy kul:BOY;
+    kul:inYear 2016.
+
+kul:Concert3 a kul:Concert ;
+    kul:performedBy kul:DePhazz;
+    kul:inYear 2001.
+
+kul:Concert4 a kul:Concert ;
+    kul:performedBy kul:DePhazz;
+    kul:inYear 2003.
+
+kul:Concert5 a kul:Concert ;
+    kul:performedBy kul:DePhazz;
+    kul:inYear 2007.
+
+kul:Concert6 a kul:Concert ;
+    kul:performedBy kul:YasmineHamdan;
+    kul:inYear 2015.
+
+
+_x: a owl:AllDifferent.
+_x: owl:members (Concert1,Concert2,Concert3,Concert4,Concert5,Concert6)
