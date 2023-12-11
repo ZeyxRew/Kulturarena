@@ -1,0 +1,7 @@
+run/
+
+apache-jena-fuseki-4.10.0/
+*.owl
+
+robot
+robot.*
