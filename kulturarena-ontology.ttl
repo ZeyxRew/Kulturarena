@@ -10,48 +10,68 @@
 #classes#
 
 kul:Concert a owl:Class ;
-    rdfs:label "inYear"@en;
+    rdfs:label "COncert"@en;
     rdfs:comment "music event"@en.
 
-kul:Musician a owl:Class ;
-    rdfs:label "Musician"@en;
-    rdfs:comment "performer of event"@en.
+# kul:Musician a owl:Class ;
+#     rdfs:label "Musician"@en;
+#     rdfs:comment "performer of event"@en.
 
 kul:Country a owl:Class;
     rdfs:label "Country"@en;
     rdfs:comment "Country"@en.
 
+kul:Ensemble a owl:Class;
+    rdfs:label "Ensemble"@en;
+    rdfs:comment "Ensemble"@en.
+
+kul:SoloPerformer a owl:Class;
+    rdfs:label "SoloPerformer"@en;
+    rdfs:comment "SoloPerformer"@en;
+    owl:maxCardinality 1.
+
+kul:EnsembleMember a owl:Class;
+    rdfs:label "EnsembleMember"@en;
+    rdfs:comment "Member of a Ensemble".
+
+kul:SoloPerformer owl:disjointWith kul:Ensemble.
+kul:SoloPerformer owl:disjointWith kul:EnsembleMember.
+
+
+# kul:Ensemble rdfs:subclassOf kul:Musician.
+# kul:SoloPerformer rdfs:subclassOf kul:Musician.
 
 #properties#
 
 #Properties for Concert
-kul:inYear a owl:DatatypeProperty ;
+kul:inYear a owl:FunctionalProperty ;
     rdfs:label "inYear"@en;
     rdfs:comment "states the year when the concert was"@en;
     rdfs:domain kul:Concert;
     rdfs:range xsd:gYear.
 
-kul:performedBy a owl:ObjectProperty;
+kul:performedBy a owl:FunctionalProperty;
 rdfs:label "performedBy"@en ;
 rdfs:comment "the concert was performed by"@en;
     rdfs:domain kul:Concert ;
-    rdfs:range kul:Musician .
+    rdfs:range [ a owl:class;
+                        owl:unionOf( kul:SoloPerformer kul:Ensemble)].
 
 
 #Properties for Country
-kul:hasName a owl:DatatypeProperty ;
+kul:hasName a owl:FunctionalProperty ;
 rdfs:label "hasName"@en ;
 rdfs:comment "states the name of the country"@en;
     rdfs:domain kul:Country ;
     rdfs:range xsd:string.
 
-kul:hasCapital a owl:DatatypeProperty ;
+kul:hasCapital a owl:FunctionalProperty ;
 rdfs:label "hasCapital"@en ;
 rdfs:comment "states thhe capital of the country"@en;
     rdfs:domain kul:Country ;
     rdfs:range xsd:string.
 
-kul:hasPopulation a owl:DatatypeProperty ;
+kul:hasPopulation a owl:FunctionalProperty ;
 rdfs:label "hasPopulation"@en ;
 rdfs:comment "states the population of the country"@en;
     rdfs:domain kul:Country;
@@ -59,29 +79,48 @@ rdfs:comment "states the population of the country"@en;
 
 
 #Properties for Musician
-kul:hasName a owl:DatatypeProperty ;
+kul:hasName a owl:FunctionalProperty ;
 rdfs:label "hasName"@en ;
-rdfs:comment "states the name off the artist"@en;
-    rdfs:domain kul:Musician ;
+rdfs:comment "states the name of the artist"@en;
+    rdfs:domain [ a owl:class;
+                        owl:unionOf( kul:SoloPerformer kul:Ensemble)];
     rdfs:range xsd:string .
 
 kul:hasMusicBrainzId a owl:DatatypeProperty;
 rdfs:label "hasMusicBrainzId"@en ;
 rdfs:comment "states the MusicBrainzId of the artist"@en;
-    rdfs:domain kul:Musician ;
+    rdfs:domain [ a owl:class;
+                        owl:unionOf( kul:SoloPerformer kul:Ensemble)];
     rdfs:range xsd:string .
 
-kul:comesFrom a owl:ObjectProperty ;
+kul:comesFrom a owl:FunctionalProperty ;
 rdfs:label "comesFrom"@en ;
 rdfs:comment "states where the artist is from"@en;
-    rdfs:domain kul:Musician;
+    rdfs:domain [ a owl:class;
+                        owl:unionOf( kul:SoloPerformer kul:Ensemble)];
     rdfs:range kul:Country.
 
 kul:hasGenre a owl:DatatypeProperty ;
 rdfs:label "hasGenre"@en ;
 rdfs:comment "states the genre of the artist"@en;
-    rdfs:domain kul:Musician;
+    rdfs:domain [ a owl:class;
+                        owl:unionOf( kul:SoloPerformer kul:Ensemble)];
     rdfs:range xsd:string.
+
+#Ensemble properties
+kul:IsMemberOf a owl:ObjectProperty;
+    rdfs:label "IsMemberOf"@en ;
+    rdfs:comment "states in which ensemble individual is"@en;
+    rdfs:domain kul:EnsembleMember;
+    rdfs:range kul:Ensemble.
+
+kul:HasMember a owl:ObjectProperty;
+    rdfs:label "HasMember"@en ;
+    rdfs:comment "states which members a ensemble has"@en;
+    rdfs:domain kul:EnsembleMember;
+    rdfs:range kul:Ensemble.
+
+
 
 
 
@@ -105,20 +144,20 @@ kul:Libanon a kul:Country;
 
 
 #musicians
-kul:BOY a kul:Musician ;
+kul:BOY a kul:Ensemble ;
     kul:hasName "BOY" ;
     kul:comesFrom kul:Germany;
     kul:comesFrom kul:Switzerland;
     kul:hasMusicBrainzId "2e76bad0-edf3-4a6c-ad79-db87bb5a0d35";
     kul:hasGenre "Pop". 
 
-kul:DePhazz a kul:Musician ;
+kul:DePhazz a kul:Ensemble ;
     kul:hasName "De-Phazz" ;
     kul:comesFrom kul:Germany;
     kul:hasMusicBrainzId "5c47ccd3-3f82-46b9-96b8-efdffc83f269";
     kul:hasGenre "Jazz". 
 
-kul:YasmineHamdan a kul:Musician ;
+kul:YasmineHamdan a kul:SoloPerformer ;
     kul:hasName "Yasmine Hamdan" ;
     kul:comesFrom kul:Libanon;
     kul:hasMusicBrainzId "9c21e094-2fbe-4ba9-9726-891d90f561a9";
