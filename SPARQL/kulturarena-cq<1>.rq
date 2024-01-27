@@ -1,14 +1,13 @@
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX kul: <http://example.org/kulturarena/>
+BASE		 <http://example.org/kulturarena/>
 #which musicians performed in 2015
 #musician-IRI, musician name
 SELECT  DISTINCT ?musician ?name
 WHERE { 
-  ?concert rdf:type kul:Concert;
-  		kul:inYear "2015"^^xsd:gYear;
-    	kul:performedBy ?musician.
-  ?musician kul:hasName ?name.
+  ?concert rdf:type <Concert>;
+  		<inYear> "2015"^^xsd:integer;
+    	<performedBy> ?musician.
+  ?musician <hasName> ?name.
 }
-
