@@ -1,204 +1,191 @@
-@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@base <http://example.org/kulturarena/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl:  <http://www.w3.org/2002/07/owl#> .
-@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-@prefix :  <http://example.org/kulturarena/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://example.org/kulturarena/> a owl:Ontology ;
-    rdfs:label "Kulturarena Ontologie"@de .
+<> a owl:Ontology ;
+rdfs:label "Kulturarena Ontologie"@de .
 
-#classes#
 
-:Concert a owl:Class ;
+<Concert> a owl:Class ;
     rdfs:label "Concert"@de;
     rdfs:comment "music event"@de.
 
-:Musician a owl:Class ;
+<Musician> a owl:Class ;
     rdfs:label "Musician"@de;
     rdfs:comment "performer of event"@de.
 
-:Country a owl:Class;
+<Country> a owl:Class;
     rdfs:label "Country"@de;
     rdfs:comment "Country"@de.
 
-:Ensemble a owl:Class;
+<Ensemble> a owl:Class;
     rdfs:label "Ensemble"@de;
     rdfs:comment "Ensemble"@de.
 
-:SoloPerformer a owl:Class;
+<SoloPerformer> a owl:Class;
     rdfs:label "SoloPerformer"@de;
     rdfs:comment "SoloPerformer"@de;
     owl:maxCardinality 1.
 
-:EnsembleMember a owl:Class;
+<EnsembleMember> a owl:Class;
     rdfs:label "EnsembleMember"@de;
     rdfs:comment "Member of a Ensemble".
 
-:SoloPerformer owl:disjointWith :Ensemble.
-:SoloPerformer owl:disjointWith :EnsembleMember.
+<SoloPerformer> owl:disjointWith <Ensemble>.
+<SoloPerformer> owl:disjointWith <EnsembleMember>.
 
 
-:Ensemble rdfs:subclassOf :Musician.
-:SoloPerformer rdfs:subclassOf :Musician.
+<Ensemble> rdfs:subclassOf <Musician>.
+<SoloPerformer> rdfs:subclassOf <Musician>.
 
-:Musician owl:unionOf (:SoloPerformer :Ensemble).
+<Musician> owl:unionOf (<SoloPerformer> <Ensemble>).
 
-#properties#
 
-#Properties for Concert
-:inYear a owl:FunctionalProperty ;
+<inYear> a owl:FunctionalProperty ;
     rdfs:label "inYear"@de;
     rdfs:comment "states the year when the concert was"@de;
-    rdfs:domain :Concert;
+    rdfs:domain <Concert>;
     rdfs:range xsd:integer.
 
-:performedBy a owl:FunctionalProperty;
+<performedBy> a owl:FunctionalProperty;
 rdfs:label "performedBy"@de ;
 rdfs:comment "the concert was performed by"@de;
-    rdfs:domain :Concert ;
-    rdfs:range :Musician.     #[ a owl:class;owl:unionOf( kul:SoloPerformer kul:Ensemble)].
+    rdfs:domain <Concert> ;
+    rdfs:range <Musician>.    
 
-
-#Properties for Country
-:hasName a owl:FunctionalProperty ;
+<hasName> a owl:FunctionalProperty ;
 rdfs:label "hasName"@de ;
 rdfs:comment "states the name of the country"@de;
-    rdfs:domain :Country ;
+    rdfs:domain <Country> ;
     rdfs:range rdfs:label.
 
-:hasCapital a owl:FunctionalProperty ;
+<hasCapital> a owl:FunctionalProperty ;
 rdfs:label "hasCapital"@de ;
 rdfs:comment "states the capital of the country"@de;
-    rdfs:domain :Country ;
+    rdfs:domain <Country> ;
     rdfs:range rdfs:label.
 
-:hasPopulation a owl:FunctionalProperty ;
+<hasPopulation> a owl:FunctionalProperty ;
 rdfs:label "hasPopulation"@de ;
 rdfs:comment "states the population of the country"@de;
-    rdfs:domain :Country;
+    rdfs:domain <Country>;
     rdfs:range xsd:positiveInteger.
 
 
-#Properties for Musician
-:hasName a owl:FunctionalProperty ;
+<hasName> a owl:FunctionalProperty ;
 rdfs:label "hasName"@de ;
 rdfs:comment "states the name of the artist"@de;
-    rdfs:domain :Musician;
+    rdfs:domain <Musician>;
     rdfs:range rdfs:label .
 
 
-#Properties for Musician
-:hasName a owl:FunctionalProperty ;
+<hasName> a owl:FunctionalProperty ;
 rdfs:label "hasName"@de ;
 rdfs:comment "states the name of the artist"@de;
-    rdfs:domain :Musician;
+    rdfs:domain <Musician>;
     rdfs:range rdfs:label .
 
 
-:hasMusicBrainzId a owl:DatatypeProperty;
+<hasMusicBrainzId> a owl:DatatypeProperty;
 rdfs:label "hasMusicBrainzId"@de ;
 rdfs:comment "states the MusicBrainzId of the artist"@de;
-    rdfs:domain :Musician;
+    rdfs:domain <Musician>;
     rdfs:range rdfs:label .
 
-:comesFrom a owl:FunctionalProperty ;
+<comesFrom> a owl:FunctionalProperty ;
 rdfs:label "comesFrom"@de ;
 rdfs:comment "states where the artist is from"@de;
-    rdfs:domain :Musician;
-    rdfs:range :Country.
+    rdfs:domain <Musician>;
+    rdfs:range <Country>.
 
 
 
-:comesFrom a owl:FunctionalProperty ;
+<comesFrom> a owl:FunctionalProperty ;
 rdfs:label "comesFrom"@de ;
 rdfs:comment "states where the artist is from"@de;
-    rdfs:domain :Musician;
-    rdfs:range :Country.
+    rdfs:domain <Musician>;
+    rdfs:range <Country>.
 
 
 
-:hasGenre a owl:DatatypeProperty ;
+<hasGenre> a owl:DatatypeProperty ;
 rdfs:label "hasGenre"@de ;
 rdfs:comment "states the genre of the artist"@de;
-    rdfs:domain :Musician;
+    rdfs:domain <Musician>;
     rdfs:range rdfs:label.
 
-#Ensemble properties
-:IsMemberOf a owl:ObjectProperty;
+<isMemberOf> a owl:ObjectProperty;
     rdfs:label "IsMemberOf"@de ;
     rdfs:comment "states in which ensemble individual is"@de;
-    rdfs:domain :EnsembleMember;
-    rdfs:range :Ensemble.
+    rdfs:domain <EnsembleMember>;
+    rdfs:range <Ensemble>.
 
-:HasMember a owl:ObjectProperty;
+<hasMember> a owl:ObjectProperty;
     rdfs:label "HasMember"@de ;
     rdfs:comment "states which members a ensemble has"@de;
-    rdfs:domain :EnsembleMember;
-    rdfs:range :Ensemble.
+    rdfs:domain <EnsembleMember>;
+    rdfs:range <Ensemble>.
+
+<Germany> a <Country>;
+    <hasName> "Germany";
+    <hasCapital> "Berlin";
+    <hasPopulation> 83200000.
+
+<Switzerland> a <Country>;
+    <hasName> "Switzerland";
+    <hasCapital> "Bern";
+    <hasPopulation> 8703000.
+
+<Libanon> a <Country>;
+    <hasName> "Libanon";
+    <hasCapital> "Beirut";
+    <hasPopulation> 8703000.
 
 
-#Instances#
 
-#countries
-:Germany a :Country;
-    :hasName "Germany";
-    :hasCapital "Berlin";
-    :hasPopulation 83200000.
+<BOY> a <Ensemble> ;   
+    <hasName> "BOY" ;
+    <comesFrom> <Germany>;
+    <comesFrom> <Switzerland>;
+    <hasMusicBrainzId> "2e76bad0-edf3-4a6c-ad79-db87bb5a0d35";
+    <hasGenre> "Pop". 
 
-:Switzerland a :Country;
-    :hasName "Switzerland";
-    :hasCapital "Bern";
-    :hasPopulation 8703000.
+<DePhazz> a <Ensemble> ;
+    <hasName> "De-Phazz" ;
+    <comesFrom> <Germany>;
+    <hasMusicBrainzId> "5c47ccd3-3f82-46b9-96b8-efdffc83f269";
+    <hasGenre> "Jazz". 
 
-:Libanon a :Country;
-    :hasName "Libanon";
-    :hasCapital "Beirut";
-    :hasPopulation 8703000.
-
-
-#musicians
-:BOY a :Ensemble ;   
-    :hasName "BOY" ;
-    :comesFrom :Germany;
-    :comesFrom :Switzerland;
-    :hasMusicBrainzId "2e76bad0-edf3-4a6c-ad79-db87bb5a0d35";
-    :hasGenre "Pop". 
-
-:DePhazz a :Ensemble ;
-    :hasName "De-Phazz" ;
-    :comesFrom :Germany;
-    :hasMusicBrainzId "5c47ccd3-3f82-46b9-96b8-efdffc83f269";
-    :hasGenre "Jazz". 
-
-:YasmineHamdan a :SoloPerformer ;
-    :hasName "Yasmine Hamdan" ;
-    :comesFrom :Libanon;
-    :hasMusicBrainzId "9c21e094-2fbe-4ba9-9726-891d90f561a9";
-    :hasGenre "Pop". 
+<YasmineHamdan> a <SoloPerformer> ;
+    <hasName> "Yasmine Hamdan" ;
+    <comesFrom> <Libanon>;
+    <hasMusicBrainzId> "9c21e094-2fbe-4ba9-9726-891d90f561a9";
+    <hasGenre> "Pop". 
     
 
-#concerts
-:Concert1 a :Concert ;
-    :performedBy :BOY;
-    :inYear "2012"^^xsd:integer.
+<Concert1> a <Concert> ;
+    <performedBy> <BOY>;
+    <inYear> "2012"^^xsd:integer.
 
-:Concert2 a :Concert ;
-    :performedBy :BOY;
-    :inYear "2016"^^xsd:integer.
+<Concert2> a <Concert> ;
+    <performedBy> <BOY>;
+    <inYear> "2016"^^xsd:integer.
 
-:Concert3 a :Concert ;
-    :performedBy :DePhazz;
-    :inYear "2001"^^xsd:integer.
+<Concert3> a <Concert> ;
+    <performedBy> <DePhazz>;
+    <inYear> "2001"^^xsd:integer.
 
-:Concert4 a :Concert ;
-    :performedBy :DePhazz;
-    :inYear "2003"^^xsd:integer.
+<Concert4> a <Concert> ;
+    <performedBy> <DePhazz>;
+    <inYear> "2003"^^xsd:integer.
 
-:Concert5 a :Concert ;
-    :performedBy :DePhazz;
-    :inYear "2007"^^xsd:integer.
+<Concert5> a <Concert> ;
+    <performedBy> <DePhazz>;
+    <inYear> "2007"^^xsd:integer.
 
-:Concert6 a :Concert ;
-    :performedBy :YasmineHamdan;
-    :inYear "2015"^^xsd:integer.
+<Concert6> a <Concert> ;
+    <performedBy> <YasmineHamdan>;
+    <inYear> "2015"^^xsd:integer.
     
