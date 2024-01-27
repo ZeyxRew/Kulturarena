@@ -2,7 +2,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX kul: <http://example.org/kulturarena/>
-SELECT ?country ?name (count(DISTINCT ?concert) as ?sum)
+#how many concerts with musicians from which countrys were performed in 2015
+SELECT ?country ?name (count(DISTINCT ?concert) as ?count)
 WHERE {
     ?concert a kul:Concert;
          kul:inYear "2015"^^xsd:gYear;

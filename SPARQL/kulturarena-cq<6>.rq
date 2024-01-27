@@ -24,3 +24,17 @@ WHERE {
 ORDER BY DESC(?yearsApart)
 LIMIT 1
 
+# {
+# Select (MAX?(jahrInner1 -?jahrInner2) AS ?abstand)
+#   Where{
+#     ?koInner 
+#       jul:hasYear ?yearInner1.
+#       FILTER NOT EXISTS {
+#         ?konzertInner2 
+#                 hasYear ?jahrInner2
+#         Filter(?jahhrInner1 < ?jahrInner2 && ?jahrInner2 < JahrInner3 )
+#       }
+#       ?konzerInner3
+#   }
+# }
+

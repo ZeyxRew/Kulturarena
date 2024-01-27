@@ -1,0 +1,38 @@
+BASE <http://example.org/kulturarena/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+
+GENERATE {
+?musician a <Musician> ;
+<hasName> "{?name}"@de .
+
+    GENERATE {
+        ?concert a <Concert> ;
+        <inYear> "{?year}"^^xsd:integer;
+        <performedBy> ?musician . 
+    }
+    ITERATOR iter:Split(?years,", *") AS ?year WHERE {
+    FILTER (?year != "")
+    BIND(<{LCASE(REPLACE(?name, " ", "" ))}{?year}> AS ?concert)
+    } 
+    .
+
+    GENERATE {
+        ?homeCountry a <Country> ; 
+            <hasName> "{?country}"@de .
+        ?musician <comesFrom> ?homeCountry . 
+    }
+    ITERATOR iter:Split(?countries," *(/|&|,) *") AS ?country 
+    WHERE {
+        BIND(<{LCASE(REPLACE(?country, " ", "" ))}> AS ?homeCountry)
+    } 
+    .
+
+}
+ITERATOR iter:CSSPath(<https://web.archive.org/web/20220913113408/https://www.kulturarena.de/kuenstler-zu-gast-in-jena.html>, "table.history tr:has(td + td)", "td:nth-child(1)/text()", "td:nth-child(2)/text()", "td:nth-child(3)/text()") AS ?row ?name ?countries ?years
+WHERE {
+BIND(<{LCASE(REPLACE(?name, " ", "" ))}> AS ?musician)
+}
