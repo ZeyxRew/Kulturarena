@@ -15,6 +15,10 @@ rdfs:label "Kulturarena Ontologie"@de .
 <Musician> a owl:Class ;
     rdfs:label "Musician"@de;
     rdfs:comment "performer of event"@de.
+    owl:equivalentClass[ 
+        rdf:type owl:Class;
+        owl:unionOf (<SoloPerformer> <Ensemble>)
+        ].
 
 <Country> a owl:Class;
     rdfs:label "Country"@de;
@@ -23,11 +27,13 @@ rdfs:label "Kulturarena Ontologie"@de .
 <Ensemble> a owl:Class;
     rdfs:label "Ensemble"@de;
     rdfs:comment "Ensemble"@de.
+<Ensemble> rdfs:subclassOf <Musician>.
 
 <SoloPerformer> a owl:Class;
     rdfs:label "SoloPerformer"@de;
     rdfs:comment "SoloPerformer"@de;
     owl:maxCardinality 1.
+<SoloPerformer> rdfs:subclassOf <Musician>.
 
 <EnsembleMember> a owl:Class;
     rdfs:label "EnsembleMember"@de;
@@ -35,13 +41,6 @@ rdfs:label "Kulturarena Ontologie"@de .
 
 <SoloPerformer> owl:disjointWith <Ensemble>.
 <SoloPerformer> owl:disjointWith <EnsembleMember>.
-
-
-<Ensemble> rdfs:subclassOf <Musician>.
-<SoloPerformer> rdfs:subclassOf <Musician>.
-
-<Musician> owl:unionOf (<SoloPerformer> <Ensemble>).
-
 
 <inYear> a owl:FunctionalProperty ;
     rdfs:label "inYear"@de;
