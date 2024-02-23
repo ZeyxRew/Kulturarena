@@ -2,6 +2,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 BASE		 <http://example.org/kulturarena/>
+#Which musical performers' consecutive concerts were most years apart and by how many years?
 SELECT ?musician ?yearsApart
 WHERE {
   ?concert1 rdf:type <Concert>;
@@ -24,18 +25,4 @@ WHERE {
 ORDER BY DESC(?yearsApart)
 LIMIT 1
 
-
-# {
-# Select (MAX?(jahrInner1 -?jahrInner2) AS ?abstand)
-#   Where{
-#     ?koInner 
-#       jul:hasYear ?yearInner1.
-#       FILTER NOT EXISTS {
-#         ?konzertInner2 
-#                 hasYear ?jahrInner2
-#         Filter(?jahhrInner1 < ?jahrInner2 && ?jahrInner2 < JahrInner3 )
-#       }
-#       ?konzerInner3
-#   }
-# }
 

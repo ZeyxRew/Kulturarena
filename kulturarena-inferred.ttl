@@ -88,23 +88,31 @@
 #################################################################
 
 ###  http://example.org/kulturarena/Artist
-:Artist rdf:type owl:Class .
+:Artist rdf:type owl:Class ;
+        rdfs:subClassOf owl:Thing ;
+        owl:disjointWith owl:Nothing .
 
 
 ###  http://example.org/kulturarena/Concert
 :Concert rdf:type owl:Class ;
+         rdfs:subClassOf owl:Thing ;
+         owl:disjointWith owl:Nothing ;
          rdfs:comment "music event"@de ;
          rdfs:label "Concert"@de .
 
 
 ###  http://example.org/kulturarena/Country
 :Country rdf:type owl:Class ;
+         rdfs:subClassOf owl:Thing ;
+         owl:disjointWith owl:Nothing ;
          rdfs:comment "Country"@de ;
          rdfs:label "Country"@de .
 
 
 ###  http://example.org/kulturarena/Ensemble
 :Ensemble rdf:type owl:Class ;
+          rdfs:subClassOf :Musician ;
+          owl:disjointWith owl:Nothing ;
           rdfs:comment "Ensemble"@de ;
           rdfs:label "Ensemble"@de .
 
@@ -116,6 +124,8 @@
                                               :SoloPerformer
                                             )
                               ] ;
+          rdfs:subClassOf owl:Thing ;
+          owl:disjointWith owl:Nothing ;
           rdfs:comment "performer of event"@de ;
           rdfs:label "Musician"@de .
 
@@ -127,12 +137,17 @@
                                                         ) ;
                                      rdf:type owl:Class
                                    ] ;
+               rdfs:subClassOf :Artist ,
+                               :Musician ;
+               owl:disjointWith owl:Nothing ;
                rdfs:comment "SoloPerformer"@de ;
                rdfs:label "SoloPerformer"@de .
 
 
 ###  http://www.w3.org/2000/01/rdf-schema#label
-rdfs:label rdf:type owl:Class .
+rdfs:label rdf:type owl:Class ;
+           rdfs:subClassOf owl:Thing ;
+           owl:disjointWith owl:Nothing .
 
 
 #################################################################
@@ -141,7 +156,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/abbeylincoln
 :abbeylincoln rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :usa ;
               :hasBirthYear 1930 ;
               :hasGenre "Jazz"@de ;
@@ -163,7 +179,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/abdullahibrahim
 :abdullahibrahim rdf:type owl:NamedIndividual ,
-                          :Musician ;
+                          :Musician ,
+                          :SoloPerformer ;
                  :comesFrom <http://example.org/kulturarena/s%C3%BCdafrika> ;
                  :hasBirthYear 1934 ;
                  :hasGenre "Bebop"@de ,
@@ -204,7 +221,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/adamgreen
 :adamgreen rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :usa ;
            :hasBirthYear 1981 ;
            :hasGenre "Indie Folk"@de ,
@@ -227,7 +245,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/afelbocoum
 :afelbocoum rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :mali ;
             :hasBirthYear 1955 ;
             :hasMusicBrainzId "d09eb662-bd34-4837-9e74-21afcd5373e3" ;
@@ -285,7 +304,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/agnesobel
 :agnesobel rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom <http://example.org/kulturarena/d%C3%A4nemark> ;
            :hasBirthYear 1980 ;
            :hasGenre "Volksmusik"@de ,
@@ -323,7 +343,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/aldimeola
 :aldimeola rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :usa ;
            :hasBirthYear 1954 ;
            :hasGenre "Fusion"@de ,
@@ -387,7 +408,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/alicephoebelou
 :alicephoebelou rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :deutschland ,
                            <http://example.org/kulturarena/s%C3%BCdafrika> ;
                 :hasBirthYear 1993 ;
@@ -406,7 +428,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/alihassankuban
 :alihassankuban rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom <http://example.org/kulturarena/%C3%A4gypten> ;
                 :hasBirthYear 1929 ;
                 :hasMusicBrainzId "5937b73f-7baf-4a55-af51-38e600c0993f" ;
@@ -464,7 +487,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/aljarreau
 :aljarreau rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :usa ;
            :hasBirthYear 1940 ;
            :hasGenre "Funk"@de ,
@@ -485,7 +509,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/allineumann
 :allineumann rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :deutschland ;
              :hasBirthYear 2000 ;
              :hasMusicBrainzId "a2e7d9e7-f675-431a-802a-2778e1462964" ;
@@ -522,6 +547,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/amsterdamklezmerband
 :amsterdamklezmerband rdf:type owl:NamedIndividual ,
+                               :Ensemble ,
                                :Musician ;
                       :comesFrom :niederlande ;
                       :hasMember :gijslevelt ;
@@ -576,7 +602,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/andreasdorau
 :andreasdorau rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :deutschland ;
               :hasBirthYear 1964 ;
               :hasGenre "Neue Deutsche Welle"@de ;
@@ -631,7 +658,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/angelobranduardi
 :angelobranduardi rdf:type owl:NamedIndividual ,
-                           :Musician ;
+                           :Musician ,
+                           :SoloPerformer ;
                   :comesFrom :italien ;
                   :hasBirthYear 1950 ;
                   :hasGenre "Popmusik"@de ;
@@ -662,7 +690,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/annaaaron
 :annaaaron rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :schweiz ;
            :hasBirthYear 1985 ;
            :hasMusicBrainzId "bae6429c-ed6e-4144-8a19-598cc641f990" ;
@@ -678,7 +707,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/annacalvi
 :annacalvi rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :uk ;
            :hasBirthYear 1980 ;
            :hasGenre "Indie-Rock"@de ,
@@ -703,7 +733,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/annadepenbusch
 :annadepenbusch rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :deutschland ;
                 :hasBirthYear 1977 ;
                 :hasGenre "Popmusik"@de ;
@@ -720,7 +751,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/annaternheim
 :annaternheim rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :schweden ;
               :hasBirthYear 1978 ;
               :hasGenre "Pop-Rock"@de ;
@@ -737,7 +769,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/anneclark
 :anneclark rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
            :hasBirthYear 1960 ;
            :hasGenre "New Wave"@de ;
@@ -754,6 +787,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/annenmaykantereit
 :annenmaykantereit rdf:type owl:NamedIndividual ,
+                            :Ensemble ,
                             :Musician ;
                    :comesFrom :deutschland ;
                    :hasMember :christopherannen ,
@@ -776,7 +810,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/anoushkashankar
 :anoushkashankar rdf:type owl:NamedIndividual ,
-                          :Musician ;
+                          :Musician ,
+                          :SoloPerformer ;
                  :comesFrom :indien ;
                  :hasBirthYear 1981 ;
                  :hasGenre "Blues"@de ,
@@ -836,7 +871,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/archieshepp
 :archieshepp rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :usa ;
              :hasBirthYear 1937 ;
              :hasGenre "Jazz"@de ,
@@ -860,6 +896,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/armeniannavyband
 :armeniannavyband rdf:type owl:NamedIndividual ,
+                           :Ensemble ,
                            :Musician ;
                   :comesFrom :armenien ;
                   :hasMember :artotunçboyacıyan ;
@@ -913,7 +950,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/asafavidan
 :asafavidan rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :israel ;
             :hasBirthYear 1980 ;
             :hasGenre "Folk"@de ,
@@ -1012,7 +1050,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/azizamustafazadeh
 :azizamustafazadeh rdf:type owl:NamedIndividual ,
-                            :Musician ;
+                            :Musician ,
+                            :SoloPerformer ;
                    :comesFrom :aserbaidschan ;
                    :hasBirthYear 1969 ;
                    :hasGenre "Jazz"@de ;
@@ -1043,7 +1082,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/baabamaal
 :baabamaal rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :senegal ;
            :hasBirthYear 1953 ;
            :hasGenre "afrikanische Musik"@de ;
@@ -1088,7 +1128,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/badiassad
 :badiassad rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :brasilien ;
            :hasBirthYear 1966 ;
            :hasGenre "Jazz"@de ;
@@ -1191,7 +1232,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/barbarathompson
 :barbarathompson rdf:type owl:NamedIndividual ,
-                          :Musician ;
+                          :Musician ,
+                          :SoloPerformer ;
                  :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
                  :hasBirthYear 1944 ;
                  :hasGenre "Fusion"@de ,
@@ -1216,7 +1258,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/battistalena
 :battistalena rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :italien ;
               :hasBirthYear 1960 ;
               :hasGenre "Jazz"@de ;
@@ -1262,6 +1305,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/beadybelle
 :beadybelle rdf:type owl:NamedIndividual ,
+                     :Ensemble ,
                      :Musician ;
             :comesFrom :norwegen ;
             :hasMember :andersaarum ,
@@ -1319,7 +1363,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/beneaperdannier
 :beneaperdannier rdf:type owl:NamedIndividual ,
-                          :Musician ;
+                          :Musician ,
+                          :SoloPerformer ;
                  :comesFrom :deutschland ;
                  :hasBirthYear 1974 ;
                  :hasMusicBrainzId "05c79843-429c-4858-b853-73810199d1b8" ;
@@ -1438,7 +1483,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/bettyelavette
 :bettyelavette rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :usa ;
                :hasBirthYear 1946 ;
                :hasGenre "Blues"@de ,
@@ -1470,7 +1516,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/billevans
 :billevans rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :usa ;
            :hasBirthYear 1929 ;
            :hasGenre "Cool Jazz"@de ,
@@ -1499,7 +1546,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/blackmilk
 :blackmilk rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :usa ;
            :hasBirthYear 1983 ;
            :hasGenre "Hip-Hop"@de ,
@@ -1517,6 +1565,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/blackseadahu
 :blackseadahu rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom :schweiz ;
               :hasMember :q77658563 ;
@@ -1546,7 +1595,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/blickbassy
 :blickbassy rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :kamerun ;
             :hasBirthYear 1974 ;
             :hasMusicBrainzId "4aa2bed2-ad19-402f-8c5c-2c0e24e4d729" ;
@@ -1595,6 +1645,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/blumfeld
 :blumfeld rdf:type owl:NamedIndividual ,
+                   :Ensemble ,
                    :Musician ;
           :comesFrom :deutschland ;
           :hasMember :jochendistelmeyer ;
@@ -1668,6 +1719,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/boy
 :boy rdf:type owl:NamedIndividual ,
+              :Ensemble ,
               :Musician ;
      :comesFrom :deutschland ,
                 :schweiz ;
@@ -1692,6 +1744,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/brandtbrauerfrick
 :brandtbrauerfrick rdf:type owl:NamedIndividual ,
+                            :Ensemble ,
                             :Musician ;
                    :comesFrom :deutschland ;
                    :hasMember :danielbrandt ;
@@ -1713,6 +1766,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/brassagainst
 :brassagainst rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom :vereinigtestaaten ;
               :hasMember :q110997134 ;
@@ -1728,6 +1782,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/bratsch
 :bratsch rdf:type owl:NamedIndividual ,
+                  :Ensemble ,
                   :Musician ;
          :comesFrom :frankreich ;
          :hasMember :q24287231 ,
@@ -1758,6 +1813,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/breckerbrothers
 :breckerbrothers rdf:type owl:NamedIndividual ,
+                          :Ensemble ,
                           :Musician ;
                  :comesFrom :usa ;
                  :hasMember :michaelbrecker ,
@@ -1859,7 +1915,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/candydulfer
 :candydulfer rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :usa ;
              :hasBirthYear 1969 ;
              :hasGenre "Cool Jazz"@de ,
@@ -1933,7 +1990,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/caroemerald
 :caroemerald rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :niederlande ;
              :hasBirthYear 1981 ;
              :hasGenre "Electroswing"@de ,
@@ -1966,7 +2024,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/cassandrawilson
 :cassandrawilson rdf:type owl:NamedIndividual ,
-                          :Musician ;
+                          :Musician ,
+                          :SoloPerformer ;
                  :comesFrom :usa ;
                  :hasBirthYear 1955 ;
                  :hasGenre "Jazz"@de ,
@@ -1984,7 +2043,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/catpower
 :catpower rdf:type owl:NamedIndividual ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom :usa ;
           :hasBirthYear 1972 ;
           :hasGenre "Alternative Rock"@de ,
@@ -2057,7 +2117,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/charlesbradley
 :charlesbradley rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :usa ;
                 :hasBirthYear 1948 ;
                 :hasGenre "Blues"@de ,
@@ -2076,9 +2137,10 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/charlesbrown
 :charlesbrown rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :usa ;
-              :hasBirthYear 1898;
+              :hasBirthYear 1898 ;
               :hasGenre "Blues"@de ,
                         "Rockmusik"@de ;
               :hasMusicBrainzId "dbc9229a-6fb7-43b1-9763-df1e87112a93" ;
@@ -2099,7 +2161,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/charliecunningham
 :charliecunningham rdf:type owl:NamedIndividual ,
-                            :Musician ;
+                            :Musician ,
+                            :SoloPerformer ;
                    :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
                    :hasBirthYear 1984 ;
                    :hasGenre "Indie Folk"@de ;
@@ -2151,6 +2214,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/chicotrujillo
 :chicotrujillo rdf:type owl:NamedIndividual ,
+                        :Ensemble ,
                         :Musician ;
                :comesFrom :chile ;
                :hasMember :q51077829 ;
@@ -2172,7 +2236,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/chillygonzales
 :chillygonzales rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :kanada ;
                 :hasBirthYear 1972 ;
                 :hasGenre "Jazz"@de ,
@@ -2205,7 +2270,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/chinamoses
 :chinamoses rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :usa ;
             :hasBirthYear 1978 ;
             :hasGenre "Contemporary R&B"@de ;
@@ -2277,7 +2343,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/clareteal
 :clareteal rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
            :hasBirthYear 1973 ;
            :hasGenre "Jazz"@de ;
@@ -2294,7 +2361,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/clueso
 :clueso rdf:type owl:NamedIndividual ,
-                 :Musician ;
+                 :Musician ,
+                 :SoloPerformer ;
         :comesFrom :deutschland ;
         :hasBirthYear 1980 ;
         :hasGenre "Popmusik"@de ;
@@ -2311,6 +2379,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/cocorosie
 :cocorosie rdf:type owl:NamedIndividual ,
+                    :Ensemble ,
                     :Musician ;
            :comesFrom :frankreich ;
            :hasMember :sierracasady ;
@@ -2326,6 +2395,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/colosseum
 :colosseum rdf:type owl:NamedIndividual ,
+                    :Ensemble ,
                     :Musician ;
            :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
            :hasMember :chrisfarlowe ,
@@ -2405,6 +2475,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/culturedpearls
 :culturedpearls rdf:type owl:NamedIndividual ,
+                         :Ensemble ,
                          :Musician ;
                 :comesFrom :deutschland ;
                 :hasMember :astridnorth ,
@@ -2429,7 +2500,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/curtisharding
 :curtisharding rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :usa ;
                :hasBirthYear 1979 ;
                :hasMusicBrainzId "3381882a-9e5a-44f9-b383-89759edf1dbd" ;
@@ -2445,7 +2517,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/curtisstigers
 :curtisstigers rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :usa ;
                :hasBirthYear 1965 ;
                :hasGenre "Jazz"@de ,
@@ -2505,9 +2578,10 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/dangerdan
 :dangerdan rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :deutschland ;
-           :hasBirthYear 1983;
+           :hasBirthYear 1983 ;
            :hasGenre "Gangsta-Rap"@de ,
                      "Hip-Hop"@de ,
                      "Rap"@de ;
@@ -2534,7 +2608,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/danisiciliano
 :danisiciliano rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :usa ;
                :hasBirthYear 2000 ;
                :hasGenre "Popmusik"@de ,
@@ -2642,7 +2717,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/deedeebridgewater
 :deedeebridgewater rdf:type owl:NamedIndividual ,
-                            :Musician ;
+                            :Musician ,
+                            :SoloPerformer ;
                    :comesFrom :usa ;
                    :hasBirthYear 1950 ;
                    :hasGenre "Jazz"@de ,
@@ -2660,6 +2736,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/deinefreunde
 :deinefreunde rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom :deutschland ;
               :hasMember :djexel.pauly ,
@@ -2677,6 +2754,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/deinelakaien
 :deinelakaien rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom :deutschland ;
               :hasMember :alexanderveljanov ;
@@ -2706,7 +2784,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/demievans
 :demievans rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :usa ;
            :hasBirthYear 1965 ;
            :hasGenre "Blues"@de ;
@@ -2750,7 +2829,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/diannereeves
 :diannereeves rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :usa ;
               :hasBirthYear 1956 ;
               :hasGenre "Contemporary R&B"@de ,
@@ -2796,7 +2876,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/dillon
 :dillon rdf:type owl:NamedIndividual ,
-                 :Musician ;
+                 :Musician ,
+                 :SoloPerformer ;
         :comesFrom :deutschland ;
         :hasBirthYear 1988 ;
         :hasGenre "Popmusik"@de ;
@@ -2876,7 +2957,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/dr.john
 :dr.john rdf:type owl:NamedIndividual ,
-                  :Musician ;
+                  :Musician ,
+                  :SoloPerformer ;
          :comesFrom :usa ;
          :hasBirthYear 1941 ;
          :hasGenre "Blues"@de ,
@@ -2913,7 +2995,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/dubfx
 :dubfx rdf:type owl:NamedIndividual ,
-                :Musician ;
+                :Musician ,
+                :SoloPerformer ;
        :comesFrom :australien ;
        :hasBirthYear 1983 ;
        :hasMusicBrainzId "4623daa8-d17f-4e76-a39d-fd22408463f1" ;
@@ -2950,7 +3033,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/ebow
 :ebow rdf:type owl:NamedIndividual ,
-               :Musician ;
+               :Musician ,
+               :SoloPerformer ;
       :comesFrom :deutschland ;
       :hasBirthYear 1990 ;
       :hasMusicBrainzId "a2f40e07-0ada-4eb7-b128-c005ee07335f" ;
@@ -2966,7 +3050,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/edsoncordeiro
 :edsoncordeiro rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :brasilien ;
                :hasBirthYear 1967 ;
                :hasGenre "Jazz"@de ,
@@ -3010,6 +3095,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/elbow
 :elbow rdf:type owl:NamedIndividual ,
+                :Ensemble ,
                 :Musician ;
        :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
        :hasMember :guygarvey ;
@@ -3039,6 +3125,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/elementofcrime
 :elementofcrime rdf:type owl:NamedIndividual ,
+                         :Ensemble ,
                          :Musician ;
                 :comesFrom :deutschland ;
                 :hasMember :davidyoung ,
@@ -3086,7 +3173,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/elif
 :elif rdf:type owl:NamedIndividual ,
-               :Musician ;
+               :Musician ,
+               :SoloPerformer ;
       :comesFrom :deutschland ;
       :hasBirthYear 1992 ;
       :hasGenre "Popmusik"@de ;
@@ -3103,7 +3191,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/elinaduni
 :elinaduni rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :albanien ,
                       :schweiz ;
            :hasBirthYear 1981 ;
@@ -3126,7 +3215,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/emelmathlouthi
 :emelmathlouthi rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :tunesien ;
                 :hasBirthYear 1982 ;
                 :hasGenre "Trip-Hop"@de ;
@@ -3173,7 +3263,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/enzoavitabile
 :enzoavitabile rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :italien ;
                :hasBirthYear 1955 ;
                :hasMusicBrainzId "f0d88199-754c-43b3-b121-74331563d060" ;
@@ -3189,7 +3280,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/ericbibb
 :ericbibb rdf:type owl:NamedIndividual ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom :usa ;
           :hasBirthYear 1951 ;
           :hasGenre "Blues"@de ;
@@ -3237,7 +3329,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/esperanzaspalding
 :esperanzaspalding rdf:type owl:NamedIndividual ,
-                            :Musician ;
+                            :Musician ,
+                            :SoloPerformer ;
                    :comesFrom :usa ;
                    :hasBirthYear 1984 ;
                    :hasGenre "Funk"@de ,
@@ -3319,7 +3412,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/faber
 :faber rdf:type owl:NamedIndividual ,
-                :Musician ;
+                :Musician ,
+                :SoloPerformer ;
        :comesFrom :schweiz ;
        :hasBirthYear 1993 ;
        :hasMusicBrainzId "41e55ccc-c01d-4e3e-9ea0-daced36c9cf3" ;
@@ -3342,6 +3436,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/farafina
 :farafina rdf:type owl:NamedIndividual ,
+                   :Ensemble ,
                    :Musician ;
           :comesFrom :burkinafaso ;
           :hasMember :boakarydembele ,
@@ -3367,6 +3462,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/farinurlaubracingteam
 :farinurlaubracingteam rdf:type owl:NamedIndividual ,
+                                :Ensemble ,
                                 :Musician ;
                        :comesFrom :deutschland ;
                        :hasMember :annettesteinkamp ,
@@ -3408,7 +3504,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/fatoumatadiawara
 :fatoumatadiawara rdf:type owl:NamedIndividual ,
-                           :Musician ;
+                           :Musician ,
+                           :SoloPerformer ;
                   :comesFrom :mali ;
                   :hasBirthYear 1982 ;
                   :hasGenre "Folk"@de ,
@@ -3462,7 +3559,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/felixmeyer
 :felixmeyer rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :deutschland ;
             :hasBirthYear 1975 ;
             :hasGenre "Chanson"@de ;
@@ -3479,7 +3577,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/femikuti
 :femikuti rdf:type owl:NamedIndividual ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom :nigeria ;
           :hasBirthYear 1962 ;
           :hasGenre "Afrobeat"@de ,
@@ -3503,6 +3602,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/fettesbrot
 :fettesbrot rdf:type owl:NamedIndividual ,
+                     :Ensemble ,
                      :Musician ;
             :comesFrom :deutschland ;
             :hasMember :borislauterbach ;
@@ -3518,7 +3618,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/filboriva
 :filboriva rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :italien ;
            :hasBirthYear 1995 ;
            :hasMusicBrainzId "4f87bbd6-ce60-40f4-9c57-92d43e0f6c5b" ;
@@ -3534,7 +3635,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/fink
 :fink rdf:type owl:NamedIndividual ,
-               :Musician ;
+               :Musician ,
+               :SoloPerformer ;
       :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
       :hasBirthYear 1972 ;
       :hasGenre "Folk"@de ,
@@ -3565,6 +3667,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/firewater
 :firewater rdf:type owl:NamedIndividual ,
+                    :Ensemble ,
                     :Musician ;
            :comesFrom :usa ;
            :hasMember :todashley ;
@@ -3608,6 +3711,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/flairck
 :flairck rdf:type owl:NamedIndividual ,
+                  :Ensemble ,
                   :Musician ;
          :comesFrom :niederlande ;
          :hasMember :erikvisser ,
@@ -3626,6 +3730,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/floggingmolly
 :floggingmolly rdf:type owl:NamedIndividual ,
+                        :Ensemble ,
                         :Musician ;
                :comesFrom :irland ,
                           :usa ;
@@ -3642,7 +3747,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/flomega
 :flomega rdf:type owl:NamedIndividual ,
-                  :Musician ;
+                  :Musician ,
+                  :SoloPerformer ;
          :comesFrom :deutschland ;
          :hasBirthYear 1979 ;
          :hasGenre "Soul"@de ;
@@ -3792,7 +3898,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/fredrikastahl
 :fredrikastahl rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :schweden ;
                :hasBirthYear 1984 ;
                :hasGenre "Popmusik"@de ;
@@ -3809,7 +3916,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/fredwesley
 :fredwesley rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :usa ;
             :hasBirthYear 1943 ;
             :hasGenre "Jazz"@de ,
@@ -3834,6 +3942,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/freshlyground
 :freshlyground rdf:type owl:NamedIndividual ,
+                        :Ensemble ,
                         :Musician ;
                :comesFrom <http://example.org/kulturarena/s%C3%BCdafrika> ;
                :hasMember :zolanimahola ;
@@ -3849,6 +3958,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/freundeskreis
 :freundeskreis rdf:type owl:NamedIndividual ,
+                        :Ensemble ,
                         :Musician ;
                :comesFrom :deutschland ;
                :hasMember :maxherre ,
@@ -3907,7 +4017,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/gayesuakyol
 :gayesuakyol rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom <http://example.org/kulturarena/t%C3%BCrkei> ;
              :hasBirthYear 1985 ;
              :hasGenre "Anadolu Rock"@de ;
@@ -3990,7 +4101,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/giannanannini
 :giannanannini rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :italien ;
                :hasBirthYear 1954 ;
                :hasGenre "Rockmusik"@de ;
@@ -4061,7 +4173,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/gisbertzuknyphausen
 :gisbertzuknyphausen rdf:type owl:NamedIndividual ,
-                              :Musician ;
+                              :Musician ,
+                              :SoloPerformer ;
                      :comesFrom :deutschland ;
                      :hasBirthYear 1979 ;
                      :hasMusicBrainzId "08291c80-d48a-4c3d-a6f8-4541f72f931a" ;
@@ -4084,7 +4197,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/glenhansard
 :glenhansard rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :irland ;
              :hasBirthYear 1970 ;
              :hasGenre "Indie-Pop"@de ,
@@ -4102,6 +4216,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/gogolbordello
 :gogolbordello rdf:type owl:NamedIndividual ,
+                        :Ensemble ,
                         :Musician ;
                :comesFrom :ukraine ,
                           :usa ;
@@ -4151,7 +4266,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/gonzalorubalcaba
 :gonzalorubalcaba rdf:type owl:NamedIndividual ,
-                           :Musician ;
+                           :Musician ,
+                           :SoloPerformer ;
                   :comesFrom :kuba ;
                   :hasBirthYear 1963 ;
                   :hasGenre "Fusion"@de ,
@@ -4234,7 +4350,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/gregormeyle
 :gregormeyle rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :deutschland ;
              :hasBirthYear 1978 ;
              :hasGenre "Popmusik"@de ;
@@ -4251,7 +4368,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/gregoryporter
 :gregoryporter rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :usa ;
                :hasBirthYear 1971 ;
                :hasGenre "Blues"@de ,
@@ -4309,6 +4427,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/gusgus
 :gusgus rdf:type owl:NamedIndividual ,
+                 :Ensemble ,
                  :Musician ;
         :comesFrom :island ;
         :hasMember :daníelágústharaldsson ;
@@ -4324,7 +4443,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/gustav
 :gustav rdf:type owl:NamedIndividual ,
-                 :Musician ;
+                 :Musician ,
+                 :SoloPerformer ;
         :comesFrom <http://example.org/kulturarena/%C3%B6sterreich> ;
         :hasBirthYear 1975 ;
         :hasMusicBrainzId "58bbd183-ec93-47bf-871b-b09d28a6ee7e" ;
@@ -4365,7 +4485,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/hamidbaroudi
 :hamidbaroudi rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :algerien ;
               :hasBirthYear 1960 ;
               :hasMusicBrainzId "ce4a046a-1bca-4076-90b6-6c653c035f29" ;
@@ -4403,6 +4524,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/hazmatmodine
 :hazmatmodine rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom :usa ;
               :hasMember :charlesburnham ,
@@ -4425,7 +4547,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/heathernova
 :heathernova rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :bermuda ;
              :hasBirthYear 1968 ;
              :hasGenre "Alternative Rock"@de ;
@@ -4442,7 +4565,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/helgeschneider
 :helgeschneider rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :deutschland ;
                 :hasBirthYear 1955 ;
                 :hasGenre "Jazz"@de ;
@@ -4497,7 +4621,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/hindizahra
 :hindizahra rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :marokko ;
             :hasBirthYear 1979 ;
             :hasGenre "Popmusik"@de ;
@@ -4514,7 +4639,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/hollycole
 :hollycole rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :kanada ;
            :hasBirthYear 1963 ;
            :hasGenre "Popmusik"@de ,
@@ -4553,7 +4679,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/hubertvongoisern
 :hubertvongoisern rdf:type owl:NamedIndividual ,
-                           :Musician ;
+                           :Musician ,
+                           :SoloPerformer ;
                   :comesFrom <http://example.org/kulturarena/%C3%B6sterreich> ;
                   :hasBirthYear 1952 ;
                   :hasGenre "Volksmusik"@de ;
@@ -4584,7 +4711,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/hughcoltman
 :hughcoltman rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom <http://example.org/kulturarena/vereinigtesk%C3%B6nigreich> ;
              :hasBirthYear 1972 ;
              :hasGenre "Jazz"@de ,
@@ -4602,7 +4730,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/hughmasekela
 :hughmasekela rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom <http://example.org/kulturarena/s%C3%BCdafrika> ;
               :hasBirthYear 1939 ;
               :hasGenre "Cape-Jazz"@de ,
@@ -4654,7 +4783,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/ibrahimferrer
 :ibrahimferrer rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :kuba ;
                :hasBirthYear 1927 ;
                :hasGenre "Latin Jazz"@de ,
@@ -4677,7 +4807,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/idasand
 :idasand rdf:type owl:NamedIndividual ,
-                  :Musician ;
+                  :Musician ,
+                  :SoloPerformer ;
          :comesFrom :schweden ;
          :hasBirthYear 1977 ;
          :hasGenre "Jazz"@de ;
@@ -4700,6 +4831,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/incognito
 :incognito rdf:type owl:NamedIndividual ,
+                    :Ensemble ,
                     :Musician ;
            :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
            :hasMember :imaani ,
@@ -4844,7 +4976,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/jamescarter
 :jamescarter rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :usa ;
              :hasBirthYear 1969 ;
              :hasGenre "Jazz"@de ,
@@ -4862,7 +4995,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/jamielidell
 :jamielidell rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
              :hasBirthYear 1973 ;
              :hasGenre "Electronica"@de ,
@@ -4881,7 +5015,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/jandelay
 :jandelay rdf:type owl:NamedIndividual ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom :deutschland ;
           :hasBirthYear 1976 ;
           :hasGenre "Popmusik"@de ;
@@ -4923,6 +5058,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/jarabedepalo
 :jarabedepalo rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom :spanien ;
               :hasMember :paudonés ;
@@ -5076,7 +5212,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/jeremyloops
 :jeremyloops rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :schweiz ,
                         <http://example.org/kulturarena/s%C3%BCdafrika> ;
              :hasBirthYear 1984 ;
@@ -5095,7 +5232,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/jespermunk
 :jespermunk rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :deutschland ;
             :hasBirthYear 1992 ;
             :hasMusicBrainzId "30d36ef2-b590-466e-b1d6-9dbe6923af00" ;
@@ -5111,7 +5249,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/jimitenor
 :jimitenor rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :finnland ;
            :hasBirthYear 1965 ;
            :hasGenre "elektronische Musik"@de ;
@@ -5128,7 +5267,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/jimmybosch
 :jimmybosch rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :usa ;
             :hasBirthYear 1959 ;
             :hasGenre "Jazz"@de ,
@@ -5146,7 +5286,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/joanarmatrading
 :joanarmatrading rdf:type owl:NamedIndividual ,
-                          :Musician ;
+                          :Musician ,
+                          :SoloPerformer ;
                  :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
                  :hasBirthYear 1950 ;
                  :hasGenre "Popmusik"@de ,
@@ -5185,7 +5326,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/jocelynb.smith
 :jocelynb.smith rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :deutschland ,
                            :usa ;
                 :hasBirthYear 1960 ;
@@ -5216,7 +5358,8 @@ rdfs:label rdf:type owl:Class .
 ###  http://example.org/kulturarena/jochendistelmeyer
 :jochendistelmeyer rdf:type owl:NamedIndividual ,
                             :Artist ,
-                            :Musician ;
+                            :Musician ,
+                            :SoloPerformer ;
                    :comesFrom :deutschland ;
                    :hasBirthYear 1967 ;
                    :hasGenre "Popmusik"@de ;
@@ -5243,7 +5386,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/joejackson
 :joejackson rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
             :hasBirthYear 1954 ;
             :hasGenre "Jazz"@de ,
@@ -5274,7 +5418,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/joezawinul
 :joezawinul rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :usa ,
                        <http://example.org/kulturarena/%C3%B6sterreich> ;
             :hasBirthYear 1932 ;
@@ -5302,7 +5447,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/johannaborchert
 :johannaborchert rdf:type owl:NamedIndividual ,
-                          :Musician ;
+                          :Musician ,
+                          :SoloPerformer ;
                  :comesFrom :deutschland ;
                  :hasBirthYear 1983 ;
                  :hasGenre "Jazz"@de ;
@@ -5319,7 +5465,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/johannesoerding
 :johannesoerding rdf:type owl:NamedIndividual ,
-                          :Musician ;
+                          :Musician ,
+                          :SoloPerformer ;
                  :comesFrom :deutschland ;
                  :hasBirthYear 1981 ;
                  :hasGenre "Popmusik"@de ;
@@ -5341,6 +5488,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/johnbutlertrio
 :johnbutlertrio rdf:type owl:NamedIndividual ,
+                         :Ensemble ,
                          :Musician ;
                 :comesFrom :australien ;
                 :hasMember :johnbutler ;
@@ -5356,7 +5504,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/johncale
 :johncale rdf:type owl:NamedIndividual ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
           :hasBirthYear 1942 ;
           :hasGenre "Alternative Rock"@de ,
@@ -5397,10 +5546,11 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/johngrant
 :johngrant rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :island ,
                       :usa ;
-           :hasBirthYear 1876;
+           :hasBirthYear 1876 ;
            :hasGenre "Indie-Rock"@de ;
            :hasMusicBrainzId "27ca9c68-650a-4659-b8ef-013e5698ff55" ,
                              "fe9afe47-debe-4d88-adf9-b2a28a5e9338" ;
@@ -5416,7 +5566,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/johnmclaughlin
 :johnmclaughlin rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
                 :hasBirthYear 1942 ;
                 :hasGenre "Ethno-Jazz"@de ,
@@ -5442,7 +5593,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/johnnyclegg
 :johnnyclegg rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom <http://example.org/kulturarena/s%C3%BCdafrika> ;
              :hasBirthYear 1953 ;
              :hasGenre "Popmusik"@de ,
@@ -5475,7 +5627,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/jorane
 :jorane rdf:type owl:NamedIndividual ,
-                 :Musician ;
+                 :Musician ,
+                 :SoloPerformer ;
         :comesFrom :kanada ;
         :hasBirthYear 1975 ;
         :hasGenre "Progressive Rock"@de ;
@@ -5511,7 +5664,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/joydenalane
 :joydenalane rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :deutschland ;
              :hasBirthYear 1973 ;
              :hasGenre "Soul"@de ,
@@ -5535,7 +5689,8 @@ rdfs:label rdf:type owl:Class .
 ###  http://example.org/kulturarena/judithholofernes
 :judithholofernes rdf:type owl:NamedIndividual ,
                            :Artist ,
-                           :Musician ;
+                           :Musician ,
+                           :SoloPerformer ;
                   :comesFrom :deutschland ;
                   :hasBirthYear 1976 ;
                   :hasGenre "Popmusik"@de ;
@@ -5577,7 +5732,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/julietavenegas
 :julietavenegas rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :mexiko ;
                 :hasBirthYear 1970 ;
                 :hasGenre "Alternative Rock"@de ,
@@ -5667,7 +5823,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/karibremnes
 :karibremnes rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :norwegen ;
              :hasBirthYear 1956 ;
              :hasGenre "Weise"@de ;
@@ -5698,7 +5855,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/katfrankie
 :katfrankie rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :australien ;
             :hasBirthYear 1978 ;
             :hasMusicBrainzId "e19dfb4a-6b17-4669-a9df-e77bd7b2b529" ;
@@ -5733,6 +5891,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/katzenjammer
 :katzenjammer rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom :norwegen ;
               :hasMember :solveigheilo ;
@@ -5765,6 +5924,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/kettcar
 :kettcar rdf:type owl:NamedIndividual ,
+                  :Ensemble ,
                   :Musician ;
          :comesFrom :deutschland ;
          :hasMember :marcuswiebusch ;
@@ -5780,7 +5940,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/khadjanin
 :khadjanin rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :belgien ,
                       :burundi ;
            :hasBirthYear 1959 ;
@@ -5797,7 +5958,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/khaled
 :khaled rdf:type owl:NamedIndividual ,
-                 :Musician ;
+                 :Musician ,
+                 :SoloPerformer ;
         :comesFrom :algerien ;
         :hasBirthYear 1960 ;
         :hasGenre "Jazz"@de ,
@@ -5854,7 +6016,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/kimmopohjonen
 :kimmopohjonen rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :finnland ;
                :hasBirthYear 1964 ;
                :hasMusicBrainzId "1a769035-7a50-45ad-aa21-471852f635a7" ;
@@ -5905,7 +6068,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/klausdoldinger
 :klausdoldinger rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :deutschland ;
                 :hasBirthYear 1936 ;
                 :hasGenre "Fusion"@de ,
@@ -5930,6 +6094,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/klee
 :klee rdf:type owl:NamedIndividual ,
+               :Ensemble ,
                :Musician ;
       :comesFrom :deutschland ;
       :hasMember :suziekerstgens ,
@@ -5993,7 +6158,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/konstantinwecker
 :konstantinwecker rdf:type owl:NamedIndividual ,
-                           :Musician ;
+                           :Musician ,
+                           :SoloPerformer ;
                   :comesFrom :deutschland ;
                   :hasBirthYear 1947 ;
                   :hasMusicBrainzId "4e1d5be7-6736-4af3-8ac8-619fabc57818" ;
@@ -6065,7 +6231,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/krystlewarren
 :krystlewarren rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :usa ;
                :hasBirthYear 1981 ;
                :hasMusicBrainzId "99af4ee9-242f-41bd-89c2-d0538a89fa71" ;
@@ -6158,6 +6325,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/ladysmithblackmambazo
 :ladysmithblackmambazo rdf:type owl:NamedIndividual ,
+                                :Ensemble ,
                                 :Musician ;
                        :comesFrom <http://example.org/kulturarena/s%C3%BCdafrika> ;
                        :hasMember :jockeyshabalala ;
@@ -6188,6 +6356,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/lamb
 :lamb rdf:type owl:NamedIndividual ,
+               :Ensemble ,
                :Musician ;
       :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
       :hasMember :andybarlow ;
@@ -6231,7 +6400,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/layegros
 :layegros rdf:type owl:NamedIndividual ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom :argentinien ;
           :hasBirthYear 2000 ;
           :hasGenre "Cumbia"@de ;
@@ -6310,6 +6480,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/lesogresdebarback
 :lesogresdebarback rdf:type owl:NamedIndividual ,
+                            :Ensemble ,
                             :Musician ;
                    :comesFrom :frankreich ;
                    :hasMember :fredburguière ,
@@ -6413,7 +6584,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/leylamccalla
 :leylamccalla rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :haiti ;
               :hasBirthYear 1985 ;
               :hasGenre "Cajun-Musik"@de ;
@@ -6485,7 +6657,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/liniker
 :liniker rdf:type owl:NamedIndividual ,
-                  :Musician ;
+                  :Musician ,
+                  :SoloPerformer ;
          :comesFrom :brasilien ;
          :hasBirthYear 1995 ;
          :hasGenre "Soul"@de ;
@@ -6507,7 +6680,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/lizzwright
 :lizzwright rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :usa ;
             :hasBirthYear 1980 ;
             :hasGenre "Jazz"@de ,
@@ -6617,7 +6791,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/louane
 :louane rdf:type owl:NamedIndividual ,
-                 :Musician ;
+                 :Musician ,
+                 :SoloPerformer ;
         :comesFrom :frankreich ;
         :hasBirthYear 1996 ;
         :hasGenre "Electronica"@de ,
@@ -6638,7 +6813,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/lubomyrmelnyk
 :lubomyrmelnyk rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :kanada ,
                           :ukraine ;
                :hasBirthYear 1948 ;
@@ -6676,6 +6852,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/luckychops
 :luckychops rdf:type owl:NamedIndividual ,
+                     :Ensemble ,
                      :Musician ;
             :comesFrom :usa ;
             :hasMember :leopellegrino ;
@@ -6696,6 +6873,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/lukasgraham
 :lukasgraham rdf:type owl:NamedIndividual ,
+                      :Ensemble ,
                       :Musician ;
              :comesFrom <http://example.org/kulturarena/d%C3%A4nemark> ;
              :hasMember :lukasforchhammer ,
@@ -6766,7 +6944,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/maceoparker
 :maceoparker rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :usa ;
              :hasBirthYear 1943 ;
              :hasGenre "Gospelmusik"@de ,
@@ -6964,7 +7143,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/marcusmiller
 :marcusmiller rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :usa ;
               :hasBirthYear 1959 ;
               :hasGenre "Funk"@de ,
@@ -7035,7 +7215,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/mariboine
 :mariboine rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :norwegen ;
            :hasBirthYear 1956 ;
            :hasGenre "Weltmusik"@de ;
@@ -7083,7 +7264,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/maritlarsen
 :maritlarsen rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :norwegen ;
              :hasBirthYear 1983 ;
              :hasGenre "Akustikversion"@de ,
@@ -7102,7 +7284,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/mariusneset
 :mariusneset rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :norwegen ;
              :hasBirthYear 1985 ;
              :hasGenre "Jazz"@de ;
@@ -7139,7 +7322,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/marlaglen
 :marlaglen rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :frankreich ,
                       :usa ;
            :hasBirthYear 1960 ;
@@ -7211,7 +7395,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/matthewherbert
 :matthewherbert rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
                 :hasBirthYear 1972 ;
                 :hasGenre "elektronische Musik"@de ,
@@ -7233,7 +7418,8 @@ rdfs:label rdf:type owl:Class .
 ###  http://example.org/kulturarena/maxherre
 :maxherre rdf:type owl:NamedIndividual ,
                    :Artist ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom :deutschland ;
           :hasBirthYear 1973 ;
           :hasGenre "Popmusik"@de ,
@@ -7258,7 +7444,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/maxim
 :maxim rdf:type owl:NamedIndividual ,
-                :Musician ;
+                :Musician ,
+                :SoloPerformer ;
        :comesFrom :deutschland ;
        :hasBirthYear 1982 ;
        :hasGenre "Europop"@de ;
@@ -7275,7 +7462,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/maxmutzke
 :maxmutzke rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :deutschland ;
            :hasBirthYear 1981 ;
            :hasGenre "Popmusik"@de ;
@@ -7292,7 +7480,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/maxprosa
 :maxprosa rdf:type owl:NamedIndividual ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom :deutschland ;
           :hasBirthYear 1990 ;
           :hasGenre "Lied"@de ;
@@ -7309,7 +7498,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/mayraandrade
 :mayraandrade rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :kapverden ;
               :hasBirthYear 1985 ;
               :hasGenre "Funaná"@de ,
@@ -7388,7 +7578,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/mercedessosa
 :mercedessosa rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :argentinien ;
               :hasBirthYear 1935 ;
               :hasGenre "Folk"@de ,
@@ -7467,7 +7658,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/michaelkaeshammer
 :michaelkaeshammer rdf:type owl:NamedIndividual ,
-                            :Musician ;
+                            :Musician ,
+                            :SoloPerformer ;
                    :comesFrom :kanada ;
                    :hasBirthYear 1977 ;
                    :hasGenre "Jazz"@de ;
@@ -7484,7 +7676,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/michaelnyman
 :michaelnyman rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :gb ;
               :hasBirthYear 1944 ;
               :hasGenre "Oper"@de ;
@@ -7516,7 +7709,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/michaelschiefel
 :michaelschiefel rdf:type owl:NamedIndividual ,
-                          :Musician ;
+                          :Musician ,
+                          :SoloPerformer ;
                  :comesFrom :deutschland ;
                  :hasBirthYear 1970 ;
                  :hasGenre "Jazz"@de ;
@@ -7533,7 +7727,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/michgerber
 :michgerber rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :schweiz ;
             :hasBirthYear 1957 ;
             :hasGenre "Nu Jazz"@de ,
@@ -7614,7 +7809,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/milow
 :milow rdf:type owl:NamedIndividual ,
-                :Musician ;
+                :Musician ,
+                :SoloPerformer ;
        :comesFrom :belgien ;
        :hasBirthYear 1981 ;
        :hasGenre "Akustikversion"@de ,
@@ -7632,7 +7828,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/miriammakeba
 :miriammakeba rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom <http://example.org/kulturarena/s%C3%BCdafrika> ;
               :hasBirthYear 1932 ;
               :hasGenre "Afrikanische Popularmusik"@de ,
@@ -7654,7 +7851,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/misia
 :misia rdf:type owl:NamedIndividual ,
-                :Musician ;
+                :Musician ,
+                :SoloPerformer ;
        :comesFrom :portugal ;
        :hasBirthYear 1978 ;
        :hasGenre "J-Pop"@de ,
@@ -7673,7 +7871,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/missli
 :missli rdf:type owl:NamedIndividual ,
-                 :Musician ;
+                 :Musician ,
+                 :SoloPerformer ;
         :comesFrom :schweden ;
         :hasBirthYear 1982 ;
         :hasGenre "Blues"@de ,
@@ -7694,7 +7893,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/mohammadrezamortazavi
 :mohammadrezamortazavi rdf:type owl:NamedIndividual ,
-                                :Musician ;
+                                :Musician ,
+                                :SoloPerformer ;
                        :comesFrom :iran ;
                        :hasBirthYear 1978 ;
                        :hasName "Mohammad Reza Mortazavi"@de .
@@ -7714,6 +7914,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/mokaeftiorchestra
 :mokaeftiorchestra rdf:type owl:NamedIndividual ,
+                            :Ensemble ,
                             :Musician ;
                    :comesFrom :deutschland ;
                    :hasMember :mariokamien ,
@@ -7738,6 +7939,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/moopmama
 :moopmama rdf:type owl:NamedIndividual ,
+                   :Ensemble ,
                    :Musician ;
           :comesFrom :deutschland ;
           :hasMember :menzelmutzke ,
@@ -7757,6 +7959,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/moriarty
 :moriarty rdf:type owl:NamedIndividual ,
+                   :Ensemble ,
                    :Musician ;
           :comesFrom :frankreich ,
                      :schweiz ,
@@ -7848,6 +8051,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/musicanuda
 :musicanuda rdf:type owl:NamedIndividual ,
+                     :Ensemble ,
                      :Musician ;
             :comesFrom :italien ;
             :hasMember :ferrucciospinetti ,
@@ -7878,7 +8082,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/mylessanko
 :mylessanko rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :ghana ,
                        <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
             :hasBirthYear 1980 ;
@@ -8045,7 +8250,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/nilslandgren
 :nilslandgren rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :schweden ;
               :hasBirthYear 1956 ;
               :hasGenre "Jazz"@de ,
@@ -8119,7 +8325,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/ninaattal
 :ninaattal rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :frankreich ;
            :hasBirthYear 1992 ;
            :hasMusicBrainzId "f3fef54b-96b2-4f47-bb9c-1030e9f5e4c3" ;
@@ -8135,7 +8342,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/ninahagen
 :ninahagen rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :deutschland ;
            :hasBirthYear 1955 ;
            :hasGenre "Neue Deutsche Welle"@de ,
@@ -8161,7 +8369,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/nneka
 :nneka rdf:type owl:NamedIndividual ,
-                :Musician ;
+                :Musician ,
+                :SoloPerformer ;
        :comesFrom :deutschland ,
                   :nigeria ;
        :hasBirthYear 1980 ;
@@ -8217,6 +8426,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/nouvellevague
 :nouvellevague rdf:type owl:NamedIndividual ,
+                        :Ensemble ,
                         :Musician ;
                :comesFrom :frankreich ;
                :hasMember :marccollin ,
@@ -8278,7 +8488,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/omaraportuondo
 :omaraportuondo rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :kuba ;
                 :hasBirthYear 1930 ;
                 :hasGenre "Bolero"@de ,
@@ -8429,7 +8640,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/pabloziegler
 :pabloziegler rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :argentinien ;
               :hasBirthYear 1944 ;
               :hasGenre "Tango"@de ;
@@ -8492,7 +8704,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/papawemba
 :papawemba rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :kongo ;
            :hasBirthYear 1949 ;
            :hasGenre "Soukous"@de ,
@@ -8510,6 +8723,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/parcels
 :parcels rdf:type owl:NamedIndividual ,
+                  :Ensemble ,
                   :Musician ;
          :comesFrom :australien ;
          :hasMember :q123521621 ,
@@ -8529,7 +8743,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/pascalcomelade
 :pascalcomelade rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :frankreich ;
                 :hasBirthYear 1955 ;
                 :hasGenre "Sardana"@de ;
@@ -8565,7 +8780,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/pattismith
 :pattismith rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :usa ;
             :hasBirthYear 1946 ;
             :hasGenre "Artrock"@de ,
@@ -8689,7 +8905,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/philipppoisel
 :philipppoisel rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :deutschland ;
                :hasBirthYear 1983 ;
                :hasGenre "Popmusik"@de ;
@@ -8727,6 +8944,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/pinkmartini
 :pinkmartini rdf:type owl:NamedIndividual ,
+                      :Ensemble ,
                       :Musician ;
              :comesFrom :usa ;
              :hasMember :chinaforbes ,
@@ -9036,7 +9254,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/rachidtaha
 :rachidtaha rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :algerien ,
                        :frankreich ;
             :hasBirthYear 1958 ;
@@ -9057,7 +9276,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/rainaldgrebe
 :rainaldgrebe rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :deutschland ;
               :hasBirthYear 1971 ;
               :hasMusicBrainzId "f9f122e2-75b8-48ef-97ee-d5109b3a8424" ;
@@ -9087,6 +9307,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/rainbirds
 :rainbirds rdf:type owl:NamedIndividual ,
+                    :Ensemble ,
                     :Musician ;
            :comesFrom :deutschland ;
            :hasMember :katharinafranck ,
@@ -9125,7 +9346,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/randycrawford
 :randycrawford rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :usa ;
                :hasBirthYear 1952 ;
                :hasGenre "Disco"@de ,
@@ -9174,7 +9396,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/ravicoltrane
 :ravicoltrane rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :usa ;
               :hasBirthYear 1965 ;
               :hasGenre "Free Jazz"@de ,
@@ -9192,7 +9415,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/raylema
 :raylema rdf:type owl:NamedIndividual ,
-                  :Musician ;
+                  :Musician ,
+                  :SoloPerformer ;
          :comesFrom :kongo ;
          :hasBirthYear 1946 ;
          :hasGenre "Jazz"@de ;
@@ -9209,7 +9433,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/rebekkabakken
 :rebekkabakken rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :norwegen ;
                :hasBirthYear 1970 ;
                :hasGenre "Folk"@de ,
@@ -9235,6 +9460,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/rebirthbrassband
 :rebirthbrassband rdf:type owl:NamedIndividual ,
+                           :Ensemble ,
                            :Musician ;
                   :comesFrom :usa ;
                   :hasMember :kermitruffins ;
@@ -9280,7 +9506,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/rickieleejones
 :rickieleejones rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :argentinien ,
                            :usa ;
                 :hasBirthYear 1954 ;
@@ -9311,7 +9538,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/rigmorgustafsson
 :rigmorgustafsson rdf:type owl:NamedIndividual ,
-                           :Musician ;
+                           :Musician ,
+                           :SoloPerformer ;
                   :comesFrom :schweden ;
                   :hasBirthYear 1966 ;
                   :hasGenre "Jazz"@de ;
@@ -9349,7 +9577,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/robertofonseca
 :robertofonseca rdf:type owl:NamedIndividual ,
-                         :Musician ;
+                         :Musician ,
+                         :SoloPerformer ;
                 :comesFrom :kuba ;
                 :hasBirthYear 1975 ;
                 :hasGenre "Jazz"@de ,
@@ -9388,7 +9617,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/robotkoch
 :robotkoch rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :deutschland ;
            :hasBirthYear 1977 ;
            :hasGenre "elektronische Musik"@de ;
@@ -9415,7 +9645,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/rogerhodgson
 :rogerhodgson rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :usa ;
               :hasBirthYear 1950 ;
               :hasGenre "Popmusik"@de ,
@@ -9438,7 +9669,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/rolandschneider
 :rolandschneider rdf:type owl:NamedIndividual ,
-                          :Musician ;
+                          :Musician ,
+                          :SoloPerformer ;
                  :comesFrom :deutschland ;
                  :hasBirthYear 1937 ;
                  :hasGenre "Jazz"@de ;
@@ -9480,6 +9712,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/russkaja
 :russkaja rdf:type owl:NamedIndividual ,
+                   :Ensemble ,
                    :Musician ;
           :comesFrom :russland ,
                      <http://example.org/kulturarena/%C3%B6sterreich> ;
@@ -9529,6 +9762,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sabribrothers
 :sabribrothers rdf:type owl:NamedIndividual ,
+                        :Ensemble ,
                         :Musician ;
                :comesFrom :pakistan ;
                :hasMember :ghulamfaridsabri ;
@@ -9544,7 +9778,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sadingding
 :sadingding rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :china ;
             :hasBirthYear 1979 ;
             :hasGenre "New Age"@de ,
@@ -9568,7 +9803,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/samydeluxe
 :samydeluxe rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :deutschland ;
             :hasBirthYear 1977 ;
             :hasGenre "Hip-Hop"@de ;
@@ -9585,7 +9821,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sandydillon
 :sandydillon rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :usa ;
              :hasBirthYear 1960 ;
              :hasMusicBrainzId "714b50a3-3c65-4cb1-bd40-fe9338d9f595" ;
@@ -9615,7 +9852,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sapho
 :sapho rdf:type owl:NamedIndividual ,
-                :Musician ;
+                :Musician ,
+                :SoloPerformer ;
        :comesFrom :usa ;
        :hasBirthYear 1950 ;
        :hasGenre "Chanson"@de ,
@@ -9633,7 +9871,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sarahmccoy
 :sarahmccoy rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :vereinigtestaaten ;
             :hasBirthYear 1985 ;
             :hasGenre "Blues"@de ,
@@ -9654,7 +9893,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/schneidertm
 :schneidertm rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :deutschland ;
              :hasBirthYear 1970 ;
              :hasMusicBrainzId "dce1f80c-3f1c-4a04-9a15-19fc005c2536" ,
@@ -9715,7 +9955,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/selahsue
 :selahsue rdf:type owl:NamedIndividual ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom :belgien ;
           :hasBirthYear 1989 ;
           :hasGenre "Rhythm and Blues"@de ,
@@ -9746,7 +9987,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sergentgarcia
 :sergentgarcia rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :frankreich ;
                :hasBirthYear 1964 ;
                :hasGenre "Weltmusik"@de ;
@@ -9763,9 +10005,10 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/seven
 :seven rdf:type owl:NamedIndividual ,
-                :Musician ;
+                :Musician ,
+                :SoloPerformer ;
        :comesFrom :schweiz ;
-       :hasBirthYear 1978;
+       :hasBirthYear 1978 ;
        :hasGenre "Hip-Hop"@de ,
                  "Soul"@de ,
                  "Q846833" ;
@@ -9794,6 +10037,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sextetomayor
 :sextetomayor rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom :argentinien ;
               :hasMember :eduardowalczak ;
@@ -9833,6 +10077,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sierramaestra
 :sierramaestra rdf:type owl:NamedIndividual ,
+                        :Ensemble ,
                         :Musician ;
                :comesFrom :kuba ;
                :hasMember :juandemarcosgonzález ;
@@ -9862,7 +10107,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/siljenergaard
 :siljenergaard rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :norwegen ;
                :hasBirthYear 1966 ;
                :hasGenre "Jazz"@de ;
@@ -10005,7 +10251,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/socalled
 :socalled rdf:type owl:NamedIndividual ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom :kanada ;
           :hasBirthYear 1976 ;
           :hasMusicBrainzId "2867812b-4a04-45c2-9b74-a7d457fb84fd" ,
@@ -10036,7 +10283,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/solomonburke
 :solomonburke rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :usa ;
               :hasBirthYear 1940 ;
               :hasGenre "Country-Musik"@de ,
@@ -10060,7 +10308,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sonajobarteh
 :sonajobarteh rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
               :hasBirthYear 1983 ;
               :hasMusicBrainzId "7778142f-c11a-44a1-8917-7e8a5d2d72df" ;
@@ -10109,7 +10358,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sophiakennedy
 :sophiakennedy rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :deutschland ;
                :hasBirthYear 1989 ;
                :hasMusicBrainzId "b578e19b-b97e-42f9-a7a7-c6fc87adb95c" ;
@@ -10125,7 +10375,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sophiehunger
 :sophiehunger rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :schweiz ;
               :hasBirthYear 1983 ;
               :hasGenre "Folk"@de ,
@@ -10196,6 +10447,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/sportfreundestiller
 :sportfreundestiller rdf:type owl:NamedIndividual ,
+                              :Ensemble ,
                               :Musician ;
                      :comesFrom :deutschland ;
                      :hasMember :florianweber ,
@@ -10219,7 +10471,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/staceykent
 :staceykent rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :usa ;
             :hasBirthYear 1968 ;
             :hasGenre "Jazz"@de ;
@@ -10264,7 +10517,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/stephanienilles
 :stephanienilles rdf:type owl:NamedIndividual ,
-                          :Musician ;
+                          :Musician ,
+                          :SoloPerformer ;
                  :comesFrom :usa ;
                  :hasBirthYear 1985 ;
                  :hasMusicBrainzId "e34e0b5a-bec0-43f4-8748-a3995dc64179" ;
@@ -10285,6 +10539,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/stepsahead
 :stepsahead rdf:type owl:NamedIndividual ,
+                     :Ensemble ,
                      :Musician ;
             :comesFrom :fusion ;
             :hasMember :mikemainieri ;
@@ -10330,7 +10585,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/susanweinert
 :susanweinert rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :deutschland ;
               :hasBirthYear 1965 ;
               :hasGenre "Jazz"@de ;
@@ -10361,7 +10617,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/suzannevega
 :suzannevega rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :usa ;
              :hasBirthYear 1959 ;
              :hasGenre "Alternative Rock"@de ;
@@ -10409,6 +10666,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/take6
 :take6 rdf:type owl:NamedIndividual ,
+                :Ensemble ,
                 :Musician ;
        :comesFrom :usa ;
        :hasMember :joelkibble ,
@@ -10455,7 +10713,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/tanialibertad
 :tanialibertad rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :peru ;
                :hasBirthYear 1952 ;
                :hasGenre "lateinamerikanische Musik"@de ;
@@ -10472,7 +10731,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/tanitatikaram
 :tanitatikaram rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
                :hasBirthYear 1969 ;
                :hasGenre "Folk"@de ,
@@ -10596,7 +10856,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/terrycallier
 :terrycallier rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :usa ;
               :hasBirthYear 1945 ;
               :hasGenre "Jazz"@de ,
@@ -10699,6 +10960,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/thebobs
 :thebobs rdf:type owl:NamedIndividual ,
+                  :Ensemble ,
                   :Musician ;
          :comesFrom :usa ;
          :hasMember :gunnarmadsen ;
@@ -10743,6 +11005,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/thecatempire
 :thecatempire rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom :australien ;
               :hasMember :olliemcgill ;
@@ -10772,6 +11035,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/thedivinecomedy
 :thedivinecomedy rdf:type owl:NamedIndividual ,
+                          :Ensemble ,
                           :Musician ;
                  :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
                  :hasMember :neilhannon ;
@@ -10787,7 +11051,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/theesuhlmann
 :theesuhlmann rdf:type owl:NamedIndividual ,
-                       :Musician ;
+                       :Musician ,
+                       :SoloPerformer ;
               :comesFrom :deutschland ;
               :hasBirthYear 1974 ;
               :hasGenre "Popmusik"@de ;
@@ -10846,6 +11111,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/theidanraichelproject
 :theidanraichelproject rdf:type owl:NamedIndividual ,
+                                :Ensemble ,
                                 :Musician ;
                        :comesFrom :israel ;
                        :hasMember :idanraichel ;
@@ -10861,6 +11127,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/theklezmatics
 :theklezmatics rdf:type owl:NamedIndividual ,
+                        :Ensemble ,
                         :Musician ;
                :comesFrom :usa ;
                :hasMember :mattdarriau ;
@@ -10953,6 +11220,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/thepuppinisisters
 :thepuppinisisters rdf:type owl:NamedIndividual ,
+                            :Ensemble ,
                             :Musician ;
                    :comesFrom :italien ,
                               <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
@@ -10969,6 +11237,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/theresidents
 :theresidents rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom :usa ;
               :hasMember :hardyfox ;
@@ -11103,7 +11372,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/thomasd
 :thomasd rdf:type owl:NamedIndividual ,
-                  :Musician ;
+                  :Musician ,
+                  :SoloPerformer ;
          :comesFrom :deutschland ;
          :hasBirthYear 1968 ;
          :hasGenre "Deutscher Hip-Hop"@de ;
@@ -11154,7 +11424,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/tinadico
 :tinadico rdf:type owl:NamedIndividual ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom <http://example.org/kulturarena/d%C3%A4nemark> ;
           :hasBirthYear 1977 ;
           :hasGenre "Popmusik"@de ;
@@ -11178,6 +11449,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/tinariwen
 :tinariwen rdf:type owl:NamedIndividual ,
+                    :Ensemble ,
                     :Musician ;
            :comesFrom :afrika ;
            :hasMember :abdallahagalhousseyni ,
@@ -11198,6 +11470,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/tindersticks
 :tindersticks rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
               :hasMember :stuarta.staples ;
@@ -11233,6 +11506,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/tocotronic
 :tocotronic rdf:type owl:NamedIndividual ,
+                     :Ensemble ,
                      :Musician ;
             :comesFrom :deutschland ;
             :hasMember :arnezank ,
@@ -11293,7 +11567,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/tomodell
 :tomodell rdf:type owl:NamedIndividual ,
-                   :Musician ;
+                   :Musician ,
+                   :SoloPerformer ;
           :comesFrom <http://example.org/kulturarena/vereinigtesk%C3%B6nigreich> ;
           :hasBirthYear 1990 ;
           :hasGenre "Folk Pop"@de ,
@@ -11316,7 +11591,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/tomwalker
 :tomwalker rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom <http://example.org/kulturarena/gro%C3%9Fbritannien> ;
            :hasBirthYear 1990 ;
            :hasGenre "Popmusik"@de ;
@@ -11343,6 +11619,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/tortoise
 :tortoise rdf:type owl:NamedIndividual ,
+                   :Ensemble ,
                    :Musician ;
           :comesFrom :usa ;
           :hasMember :bundyk.brown ;
@@ -11363,6 +11640,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/towerofpower
 :towerofpower rdf:type owl:NamedIndividual ,
+                       :Ensemble ,
                        :Musician ;
               :comesFrom :usa ;
               :hasMember :adolfoacosta ,
@@ -11406,6 +11684,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/travis
 :travis rdf:type owl:NamedIndividual ,
+                 :Ensemble ,
                  :Musician ;
         :comesFrom :schottland ;
         :hasMember :andydunlop ,
@@ -11510,7 +11789,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/utelemper
 :utelemper rdf:type owl:NamedIndividual ,
-                    :Musician ;
+                    :Musician ,
+                    :SoloPerformer ;
            :comesFrom :deutschland ;
            :hasBirthYear 1963 ;
            :hasGenre "Jazz"@de ,
@@ -11529,7 +11809,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/valeriejune
 :valeriejune rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :usa ;
              :hasBirthYear 1982 ;
              :hasGenre "Blues"@de ,
@@ -11588,7 +11869,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/viennateng
 :viennateng rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :usa ;
             :hasBirthYear 1978 ;
             :hasGenre "Popmusik"@de ;
@@ -11707,7 +11989,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/wallisbird
 :wallisbird rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :irland ;
             :hasBirthYear 1982 ;
             :hasGenre "Folk"@de ;
@@ -11759,7 +12042,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/wimmertens
 :wimmertens rdf:type owl:NamedIndividual ,
-                     :Musician ;
+                     :Musician ,
+                     :SoloPerformer ;
             :comesFrom :belgien ;
             :hasBirthYear 1953 ;
             :hasMusicBrainzId "bc2fd8bc-91ea-4b7e-a52e-d67bea5c0313" ;
@@ -11782,6 +12066,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/wirsindhelden
 :wirsindhelden rdf:type owl:NamedIndividual ,
+                        :Ensemble ,
                         :Musician ;
                :comesFrom :deutschland ;
                :hasMember :jenseckhoff ,
@@ -11812,7 +12097,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/yanntiersen
 :yanntiersen rdf:type owl:NamedIndividual ,
-                      :Musician ;
+                      :Musician ,
+                      :SoloPerformer ;
              :comesFrom :frankreich ;
              :hasBirthYear 1970 ;
              :hasGenre "Klassizismus"@de ,
@@ -11831,7 +12117,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/yasminehamdan
 :yasminehamdan rdf:type owl:NamedIndividual ,
-                        :Musician ;
+                        :Musician ,
+                        :SoloPerformer ;
                :comesFrom :libanon ;
                :hasBirthYear 1976 ;
                :hasGenre "Popmusik"@de ;
@@ -11882,6 +12169,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/zapmama
 :zapmama rdf:type owl:NamedIndividual ,
+                  :Ensemble ,
                   :Musician ;
          :comesFrom :belgien ,
                     :zaire ;
@@ -11961,7 +12249,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/%C3%B3lafurarnalds
 <http://example.org/kulturarena/%C3%B3lafurarnalds> rdf:type owl:NamedIndividual ,
-                                                             :Musician ;
+                                                             :Musician ,
+                                                             :SoloPerformer ;
                                                     :comesFrom :island ;
                                                     :hasBirthYear 1986 ;
                                                     :hasGenre "Ambient"@de ,
@@ -11999,6 +12288,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/17hippies
 <http://example.org/kulturarena/17hippies> rdf:type owl:NamedIndividual ,
+                                                    :Ensemble ,
                                                     :Musician ;
                                            :comesFrom :deutschland ;
                                            :hasMember :christopherblenkinsop ,
@@ -12019,6 +12309,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/2raumwohnung
 <http://example.org/kulturarena/2raumwohnung> rdf:type owl:NamedIndividual ,
+                                                       :Ensemble ,
                                                        :Musician ;
                                               :comesFrom :deutschland ;
                                               :hasMember :ingahumpe ,
@@ -12049,6 +12340,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/amadou%26mariam
 <http://example.org/kulturarena/amadou%26mariam> rdf:type owl:NamedIndividual ,
+                                                          :Ensemble ,
                                                           :Musician ;
                                                  :comesFrom :mali ;
                                                  :hasMember :amadoubagayako ,
@@ -12086,7 +12378,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/ang%C3%A9liquekidjo
 <http://example.org/kulturarena/ang%C3%A9liquekidjo> rdf:type owl:NamedIndividual ,
-                                                              :Musician ;
+                                                              :Musician ,
+                                                              :SoloPerformer ;
                                                      :comesFrom :benin ,
                                                                 :frankreich ;
                                                      :hasBirthYear 1960 ;
@@ -12136,7 +12429,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/bir%C3%A9lilagr%C3%A8ne
 <http://example.org/kulturarena/bir%C3%A9lilagr%C3%A8ne> rdf:type owl:NamedIndividual ,
-                                                                  :Musician ;
+                                                                  :Musician ,
+                                                                  :SoloPerformer ;
                                                          :comesFrom :frankreich ;
                                                          :hasBirthYear 1966 ;
                                                          :hasGenre "Jazz"@de ,
@@ -12231,7 +12525,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/chicoc%C3%A9sar
 <http://example.org/kulturarena/chicoc%C3%A9sar> rdf:type owl:NamedIndividual ,
-                                                          :Musician ;
+                                                          :Musician ,
+                                                          :SoloPerformer ;
                                                  :comesFrom :brasilien ;
                                                  :hasBirthYear 1964 ;
                                                  :hasGenre "Avantgarde"@de ,
@@ -12270,7 +12565,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/christianl%C3%B6ffler
 <http://example.org/kulturarena/christianl%C3%B6ffler> rdf:type owl:NamedIndividual ,
-                                                                :Musician ;
+                                                                :Musician ,
+                                                                :SoloPerformer ;
                                                        :comesFrom :deutschland ;
                                                        :hasBirthYear 1985 ;
                                                        :hasMusicBrainzId "a0d91c38-f5dc-487b-9b30-b67de1e7489e" ;
@@ -12461,6 +12757,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/einst%C3%BCrzendeneubauten
 <http://example.org/kulturarena/einst%C3%BCrzendeneubauten> rdf:type owl:NamedIndividual ,
+                                                                     :Ensemble ,
                                                                      :Musician ;
                                                             :comesFrom :deutschland ;
                                                             :hasMember :alexanderhacke ,
@@ -12480,6 +12777,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/emirkusturica%26thenosmokingorchestra
 <http://example.org/kulturarena/emirkusturica%26thenosmokingorchestra> rdf:type owl:NamedIndividual ,
+                                                                                :Ensemble ,
                                                                                 :Musician ;
                                                                        :comesFrom :serbien ;
                                                                        :hasMember :emirkusturica ;
@@ -12726,7 +13024,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/g%C3%B6tzalsmann
 <http://example.org/kulturarena/g%C3%B6tzalsmann> rdf:type owl:NamedIndividual ,
-                                                           :Musician ;
+                                                           :Musician ,
+                                                           :SoloPerformer ;
                                                   :comesFrom :deutschland ;
                                                   :hasBirthYear 1957 ;
                                                   :hasGenre "Jazz"@de ;
@@ -12874,7 +13173,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/gustavpeterw%C3%B6hler
 <http://example.org/kulturarena/gustavpeterw%C3%B6hler> rdf:type owl:NamedIndividual ,
-                                                                 :Musician ;
+                                                                 :Musician ,
+                                                                 :SoloPerformer ;
                                                         :comesFrom :deutschland ;
                                                         :hasBirthYear 1956 ;
                                                         :hasMusicBrainzId "88f346a6-7f05-4931-bbfa-ed0e72bbcc4c" ;
@@ -12890,7 +13190,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/habibkoit%C3%A9
 <http://example.org/kulturarena/habibkoit%C3%A9> rdf:type owl:NamedIndividual ,
-                                                          :Musician ;
+                                                          :Musician ,
+                                                          :SoloPerformer ;
                                                  :comesFrom :mali ;
                                                  :hasBirthYear 1958 ;
                                                  :hasGenre "Weltmusik"@de ,
@@ -13138,7 +13439,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/jos%C3%A9james
 <http://example.org/kulturarena/jos%C3%A9james> rdf:type owl:NamedIndividual ,
-                                                         :Musician ;
+                                                         :Musician ,
+                                                         :SoloPerformer ;
                                                 :comesFrom <http://example.org/kulturarena/vereinigtesk%C3%B6nigreich> ;
                                                 :hasBirthYear 1978 ;
                                                 :hasGenre "Hip-Hop"@de ,
@@ -13489,7 +13791,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/manukatch%C3%A9
 <http://example.org/kulturarena/manukatch%C3%A9> rdf:type owl:NamedIndividual ,
-                                                          :Musician ;
+                                                          :Musician ,
+                                                          :SoloPerformer ;
                                                  :comesFrom :frankreich ;
                                                  :hasBirthYear 1958 ;
                                                  :hasGenre "Artrock"@de ,
@@ -13511,7 +13814,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/mariajo%C3%A3o
 <http://example.org/kulturarena/mariajo%C3%A3o> rdf:type owl:NamedIndividual ,
-                                                         :Musician ;
+                                                         :Musician ,
+                                                         :SoloPerformer ;
                                                 :comesFrom :portugal ;
                                                 :hasBirthYear 1956 ;
                                                 :hasGenre "Jazz"@de ,
@@ -13646,7 +13950,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/nilsw%C3%BClker
 <http://example.org/kulturarena/nilsw%C3%BClker> rdf:type owl:NamedIndividual ,
-                                                          :Musician ;
+                                                          :Musician ,
+                                                          :SoloPerformer ;
                                                  :comesFrom :deutschland ;
                                                  :hasBirthYear 1977 ;
                                                  :hasGenre "Jazz"@de ;
@@ -13754,7 +14059,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/raulmid%C3%B3n
 <http://example.org/kulturarena/raulmid%C3%B3n> rdf:type owl:NamedIndividual ,
-                                                         :Musician ;
+                                                         :Musician ,
+                                                         :SoloPerformer ;
                                                 :comesFrom :usa ;
                                                 :hasBirthYear 1966 ;
                                                 :hasGenre "Flamenco"@de ,
@@ -13802,7 +14108,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/ren%C3%A9aubry
 <http://example.org/kulturarena/ren%C3%A9aubry> rdf:type owl:NamedIndividual ,
-                                                         :Musician ;
+                                                         :Musician ,
+                                                         :SoloPerformer ;
                                                 :comesFrom :frankreich ;
                                                 :hasBirthYear 1956 ;
                                                 :hasGenre "zeitgenössische klassische Musik"@de ;
@@ -13932,7 +14239,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/rub%C3%A9ngonz%C3%A1lez
 <http://example.org/kulturarena/rub%C3%A9ngonz%C3%A1lez> rdf:type owl:NamedIndividual ,
-                                                                  :Musician ;
+                                                                  :Musician ,
+                                                                  :SoloPerformer ;
                                                          :comesFrom :kuba ;
                                                          :hasBirthYear 1919 ;
                                                          :hasGenre "Son Cubano"@de ;
@@ -14079,6 +14387,7 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/soil%26%E2%80%9Epimp%E2%80%9Csessions
 <http://example.org/kulturarena/soil%26%E2%80%9Epimp%E2%80%9Csessions> rdf:type owl:NamedIndividual ,
+                                                                                :Ensemble ,
                                                                                 :Musician ;
                                                                        :comesFrom :japan ;
                                                                        :hasMember :goldmanakita ,
@@ -14249,7 +14558,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/tillbr%C3%B6nner
 <http://example.org/kulturarena/tillbr%C3%B6nner> rdf:type owl:NamedIndividual ,
-                                                           :Musician ;
+                                                           :Musician ,
+                                                           :SoloPerformer ;
                                                   :comesFrom :deutschland ;
                                                   :hasBirthYear 1971 ;
                                                   :hasGenre "Jazz"@de ;
@@ -14423,7 +14733,8 @@ rdfs:label rdf:type owl:Class .
 
 ###  http://example.org/kulturarena/voodooj%C3%BCrgens
 <http://example.org/kulturarena/voodooj%C3%BCrgens> rdf:type owl:NamedIndividual ,
-                                                             :Musician ;
+                                                             :Musician ,
+                                                             :SoloPerformer ;
                                                     :comesFrom <http://example.org/kulturarena/%C3%B6sterreich> ;
                                                     :hasBirthYear 1983 ;
                                                     :hasGenre "Austropop"@de ;

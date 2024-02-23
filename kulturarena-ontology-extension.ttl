@@ -1,0 +1,107 @@
+@base         <http://example.org/kulturarena/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/kulturarena/> rdf:type owl:Ontology ;
+                                   rdfs:label "Kulturarena Ontologie"@de .
+
+
+#####classes#####
+<Concert> a owl:Class ;
+    rdfs:label "Concert"@de;
+    rdfs:comment "music event"@de.
+
+<Musician> a owl:Class ;
+    rdfs:label "Musician"@de;
+    rdfs:comment "performer of event"@de;
+    owl:equivalentClass[ 
+        a owl:Class;
+        owl:unionOf (<SoloPerformer> <Ensemble>)
+        ].
+
+<Country> a owl:Class;
+    rdfs:label "Country"@de;
+    rdfs:comment "Country"@de.
+
+<Ensemble> a owl:Class;
+    rdfs:label "Ensemble"@de;
+    rdfs:comment "Ensemble"@de;
+    rdfs:subclassOf <Musician>.
+    
+<SoloPerformer> a owl:Class;
+    rdfs:label "SoloPerformer"@de;
+    rdfs:comment "SoloPerformer"@de;
+    rdfs:subclassOf <Musician>; 
+    rdfs:subclassOf <Artist>;
+    owl:equivalentClass[ 
+        a owl:Class;
+        owl:intersectionOf (<Musician> <Artist>)
+        ].
+
+<Artist> a owl:Class;
+    rdfs:label "Artist"@de;
+    rdfs:comment "Artist"@de;.
+
+#####properties###### 
+<hasMember> a owl:ObjectProperty;
+    rdfs:label "hasMember"@de;
+    rdfs:comment "states the member of an ensemble"@de;
+    rdfs:domain <Ensemble>;
+    rdfs:range <Artist>.
+
+<inYear> a owl:FunctionalProperty ;
+    rdfs:label "inYear"@de;
+    rdfs:comment "states the year when the concert was"@de;
+    rdfs:domain <Concert>;
+    rdfs:range xsd:integer.
+
+<performedBy> a owl:FunctionalProperty;
+rdfs:label "performedBy"@de ;
+rdfs:comment "the concert was performed by"@de;
+    rdfs:domain <Concert> ;
+    rdfs:range <Musician>.    
+
+<hasName> a owl:FunctionalProperty ;
+rdfs:label "hasName"@de ;
+rdfs:comment "states the name of the country"@de;
+    rdfs:domain <Country> ;
+    rdfs:range rdfs:label.
+
+<hasName> a owl:FunctionalProperty ;
+rdfs:label "hasName"@de ;
+rdfs:comment "states the name of the artist"@de;
+    rdfs:domain <Musician>;
+    rdfs:range rdfs:label .
+
+<hasMusicBrainzId> a owl:DatatypeProperty;
+rdfs:label "hasMusicBrainzId"@de ;
+rdfs:comment "states the MusicBrainzId of the artist"@de;
+    rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( <Artist>
+                                              <Ensemble>
+                                            )
+                              ] ;
+    rdfs:range xsd:string .
+
+<comesFrom> a owl:ObjectProperty ;
+rdfs:label "comesFrom"@de ;
+rdfs:comment "states where the artist is from"@de;
+    rdfs:domain <Musician>;
+    rdfs:range <Country>.
+
+
+<hasGenre> a owl:DatatypeProperty ;
+rdfs:label "hasGenre"@de ;
+rdfs:comment "states the genre of the musician"@de;
+    rdfs:domain <Musician>.
+
+
+<hasBirthYear>  a owl:DatatypeProperty ;
+                a owl:FunctionalProperty ;
+                rdfs:label "hasBirthYear"@de ;
+                rdfs:comment "Birth year of an artist"@de;
+                rdfs:domain <Artist> ;
+                rdfs:range xsd:integer .
+

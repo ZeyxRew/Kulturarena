@@ -8,5 +8,5 @@ SELECT (COUNT(DISTINCT ?concert) AS ?count)
 WHERE { 
     ?concert a <Concert>;
          <performedBy> ?musician.
-    ?musician <hasName> "BOY".
+    ?musician <hasName> "BOY"@de.
 }

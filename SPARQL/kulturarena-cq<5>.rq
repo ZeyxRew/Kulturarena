@@ -5,7 +5,7 @@ BASE		 <http://example.org/kulturarena/>
 # musician-IRI, genre name, MusicBrainz artist ID
 SELECT ?musician ?musicBrainzId ?genre
 WHERE { 
-  ?musician <hasName> "Yasmine Hamdan";
+  ?musician <hasName> "Yasmine Hamdan"@de;
             <hasGenre> ?genre;
             <hasMusicBrainzId> ?musicBrainzId.
 }
